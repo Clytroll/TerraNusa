@@ -19,9 +19,22 @@
             }
         }
     </script>
+    <style>
+        .navbar-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+        .navbar-hidden {
+            transform: translateY(-100%);
+        }
+    </style>
 </head>
 <body class="bg-background">
-    <header class="bg-primary text-white">
+    <header id="navbar" class="bg-primary text-white">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold">TerraNusa</div>
             <nav>
@@ -39,6 +52,9 @@
             </div>
         </div>
     </header>
+
+    <!-- Spacer div to prevent content jump when navbar becomes fixed -->
+    <div id="navbar-spacer" class="hidden"></div>
 
     <main>
         <section class="bg-primary text-white py-20">
@@ -148,5 +164,37 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+        const navbarSpacer = document.getElementById('navbar-spacer');
+        const navbarHeight = navbar.offsetHeight;
+        
+        // Set spacer height to match navbar
+        navbarSpacer.style.height = navbarHeight + 'px';
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add fixed navbar when scrolling starts
+            if (scrollTop > 0) {
+                navbar.classList.add('navbar-fixed');
+                navbarSpacer.classList.remove('hidden');
+            } else {
+                navbar.classList.remove('navbar-fixed');
+                navbarSpacer.classList.add('hidden');
+            }
+            
+            // Hide navbar when scrolling down, show when scrolling up
+            if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
+                navbar.classList.add('navbar-hidden');
+            } else {
+                navbar.classList.remove('navbar-hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
 </body>
 </html>
