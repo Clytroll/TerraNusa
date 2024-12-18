@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraNusa - Jelajahi Keindahan Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#16423C',
+                        secondary: '#6A9C89',
+                        tertiary: '#C4DAD2',
+                        background: '#E9EFEC',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background">
+    <header class="bg-primary text-white">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">TerraNusa</div>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-tertiary">Beranda</a></li>
+                    <li><a href="destinasi.html" class="hover:text-tertiary">Destinasi</a></li>
+                    <li><a href="paket-travel.html" class="hover:text-tertiary">Paket Travel</a></li>
+                    <li><a href="penginapan.html" class="hover:text-tertiary">Penginapan</a></li>
+                    <li><a href="transportasi.html" class="hover:text-tertiary">Transportasi</a></li>
+                </ul>
+            </nav>
+            <div class="flex space-x-2">
+                <a href="login.html" class="bg-secondary px-4 py-2 rounded">Masuk</a>
+                <a href="register.html" class="bg-tertiary text-primary px-4 py-2 rounded">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="bg-primary text-white py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h1 class="text-4xl font-bold mb-4">Jelajahi Keindahan Indonesia dengan TerraNusa</h1>
+                    <p class="mb-8">Temukan destinasi wisata terbaik, penginapan nyaman, dan pengalaman perjalanan tak terlupakan.</p>
+                    <a href="destinasi.html" class="bg-secondary text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-secondary-dark transition duration-300">Mulai Petualangan</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">Destinasi Populer</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://via.placeholder.com/400x300" alt="Bali" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Bali</h3>
+                            <p class="text-gray-600 mb-4">Pulau dewata dengan keindahan alam dan budaya yang memukau.</p>
+                            <a href="destinasi.html" class="text-secondary hover:underline">Lihat Detail</a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://via.placeholder.com/400x300" alt="Raja Ampat" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Raja Ampat</h3>
+                            <p class="text-gray-600 mb-4">Surga bawah laut dengan keindahan terumbu karang yang menakjubkan.</p>
+                            <a href="destinasi.html" class="text-secondary hover:underline">Lihat Detail</a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://via.placeholder.com/400x300" alt="Yogyakarta" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold mb-2">Yogyakarta</h3>
+                            <p class="text-gray-600 mb-4">Kota budaya dengan pesona sejarah dan kuliner yang menggoda.</p>
+                            <a href="destinasi.html" class="text-secondary hover:underline">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-tertiary py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">Layanan Kami</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-xl font-bold mb-4">Paket Travel</h3>
+                        <p class="text-gray-600 mb-4">Nikmati perjalanan yang sudah direncanakan dengan matang.</p>
+                        <a href="paket-travel.html" class="text-secondary hover:underline">Lihat Paket</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-xl font-bold mb-4">Penginapan</h3>
+                        <p class="text-gray-600 mb-4">Temukan akomodasi terbaik untuk kenyamanan Anda.</p>
+                        <a href="penginapan.html" class="text-secondary hover:underline">Cari Penginapan</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-xl font-bold mb-4">Transportasi</h3>
+                        <p class="text-gray-600 mb-4">Pilih moda transportasi sesuai kebutuhan Anda.</p>
+                        <a href="transportasi.html" class="text-secondary hover:underline">Lihat Opsi</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <h3 class="text-xl font-bold mb-4">Panduan Wisata</h3>
+                        <p class="text-gray-600 mb-4">Dapatkan informasi lengkap tentang destinasi wisata.</p>
+                        <a href="#" class="text-secondary hover:underline">Baca Panduan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">TerraNusa</h3>
+                    <p>Jelajahi keindahan Indonesia bersama kami.</p>
+                </div>
+                <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                    <h4 class="font-bold mb-2">Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="index.html" class="hover:text-tertiary">Beranda</a></li>
+                        <li><a href="destinasi.html" class="hover:text-tertiary">Destinasi</a></li>
+                        <li><a href="paket-travel.html" class="hover:text-tertiary">Paket Travel</a></li>
+                        <li><a href="penginapan.html" class="hover:text-tertiary">Penginapan</a></li>
+                        <li><a href="transportasi.html" class="hover:text-tertiary">Transportasi</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                    <h4 class="font-bold mb-2">Hubungi Kami</h4>
+                    <p>Email: info@terranusa.com</p>
+                    <p>Telepon: +62 123 4567 890</p>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h4 class="font-bold mb-2">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-tertiary">Facebook</a>
+                        <a href="#" class="hover:text-tertiary">Twitter</a>
+                        <a href="#" class="hover:text-tertiary">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-secondary text-center">
+                <p>&copy; 2023 TerraNusa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
