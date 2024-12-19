@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pemesanan - TerraNusa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Styles for the Page */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#16423C',
+                        secondary: '#6A9C89',
+                        tertiary: '#C4DAD2',
+                        background: '#E9EFEC'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background">
+
+    <!-- Navbar -->
+    <header class="text-white bg-primary py-4">
+        <div class="container-custom mx-auto flex justify-between items-center">
+            <div class="h-10">
+                <a href="index.html" class="block">
+                    <img src="Gambar/LogoTerraNusa.png" alt="TerraNusa Logo" class="h-12 w-auto">
+                </a>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-sm hover:text-tertiary">Beranda</a></li>
+                    <li><a href="destinasi.html" class="text-sm hover:text-tertiary">Destinasi</a></li>
+                    <li><a href="paket-travel.html" class="text-sm hover:text-tertiary">Paket Travel</a></li>
+                    <li><a href="riwayat-pemesanan.html" class="text-sm font-semibold hover:text-tertiary">Riwayat Pemesanan</a></li>
+                    <li><a href="about.html" class="text-sm hover:text-tertiary">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="py-16 bg-tertiary text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">Riwayat Pemesanan Anda</h1>
+        <p class="text-gray-600">Lihat semua pemesanan yang telah Anda lakukan di TerraNusa.</p>
+    </section>
+
+    <!-- Order History Section -->
+    <section class="py-16">
+        <div class="container-custom mx-auto">
+            <!-- Filter (optional) -->
+            <div class="mb-8 flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <button class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition">Semua</button>
+                    <button class="bg-white text-secondary px-4 py-2 rounded-md hover:bg-secondary hover:text-white transition">Tunggu Pembayaran</button>
+                    <button class="bg-white text-secondary px-4 py-2 rounded-md hover:bg-secondary hover:text-white transition">Selesai</button>
+                    <button class="bg-white text-secondary px-4 py-2 rounded-md hover:bg-secondary hover:text-white transition">Dibatalkan</button>
+                </div>
+                <input type="text" placeholder="Cari Pemesanan" class="px-4 py-2 border border-gray-300 rounded-md w-1/3">
+            </div>
+
+            <!-- Order Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Order 1 -->
+                <div class="card bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-primary">Paket Wisata Pantai Parangtritis</h3>
+                    <p class="text-gray-600 mt-2">Status: <span class="text-yellow-500">Menunggu Pembayaran</span></p>
+                    <p class="text-gray-500 mt-2">Tanggal Pemesanan: 20 November 2024</p>
+                    <p class="text-gray-500 mt-2">Jumlah Peserta: 4 orang</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="detail-pemesanan.html" class="text-secondary hover:underline">Lihat Detail</a>
+                        <span class="text-primary font-bold">Rp 1.200.000</span>
+                    </div>
+                </div>
+
+                <!-- Order 2 -->
+                <div class="card bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-primary">Paket Wisata Heha Forest</h3>
+                    <p class="text-gray-600 mt-2">Status: <span class="text-green-500">Selesai</span></p>
+                    <p class="text-gray-500 mt-2">Tanggal Pemesanan: 10 November 2024</p>
+                    <p class="text-gray-500 mt-2">Jumlah Peserta: 2 orang</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="detail-pemesanan.html" class="text-secondary hover:underline">Lihat Detail</a>
+                        <span class="text-primary font-bold">Rp 800.000</span>
+                    </div>
+                </div>
+
+                <!-- Order 3 -->
+                <div class="card bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-primary">Paket Hemat Yogyakarta</h3>
+                    <p class="text-gray-600 mt-2">Status: <span class="text-red-500">Dibatalkan</span></p>
+                    <p class="text-gray-500 mt-2">Tanggal Pemesanan: 15 Oktober 2024</p>
+                    <p class="text-gray-500 mt-2">Jumlah Peserta: 3 orang</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <a href="detail-pemesanan.html" class="text-secondary hover:underline">Lihat Detail</a>
+                        <span class="text-primary font-bold">Rp 600.000</span>
+                    </div>
+                </div>
+
+                <!-- Additional orders can be added similarly -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">TerraNusa</h3>
+                    <p>Jelajahi keindahan Indonesia bersama kami.</p>
+                </div>
+                <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                    <h4 class="font-bold mb-2">Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="index.html" class="hover:text-tertiary">Beranda</a></li>
+                        <li><a href="destinasi.html" class="hover:text-tertiary">Destinasi</a></li>
+                        <li><a href="paket-travel.html" class="hover:text-tertiary">Paket Travel</a></li>
+                        <li><a href="about.html" class="hover:text-tertiary">About</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                    <h4 class="font-bold mb-2">Hubungi Kami</h4>
+                    <p>Email: info@terranusa.com</p>
+                    <p>Telepon: +62 123 4567 890</p>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h4 class="font-bold mb-2">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-tertiary">Facebook</a>
+                        <a href="#" class="hover:text-tertiary">Twitter</a>
+                        <a href="#" class="hover:text-tertiary">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-secondary text-center">
+                <p>&copy; 2023 TerraNusa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
