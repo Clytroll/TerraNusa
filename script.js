@@ -104,29 +104,49 @@ const modalTitle = document.getElementById('modalTitle');
 const submitButtonText = document.getElementById('submitButtonText');
 let currentMode = 'login';
 
-function openModal(mode) {
-    currentMode = mode;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+document.getElementById("form_login").addEventListener("submit", function(event) {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
-    if (mode === 'login') {
-        modalTitle.textContent = 'Masuk';
-        submitButtonText.textContent = 'Masuk';
-    } else {
-        modalTitle.textContent = 'Daftar';
-        submitButtonText.textContent = 'Daftar';
+    if (username === "") {
+        alert("Username tidak boleh kosong!");
+       
+    } else if (password === "") {
+        alert("Password tidak boleh kosong!");
+       
+    } else if (username !== "SyntechLabs") {
+        alert("Username tidak ditemukan!");
+       
+    } else if (password !== "1234") {
+        alert("Password salah!");
+       
     }
-}
+});
 
-function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
 
-function handleSubmit(event) {
-    event.preventDefault();
-    console.log('Form submitted:', currentMode);
-}
+document.getElementById("username").addEventListener("mouseover", function() {
+    this.setAttribute('title', 'isikan username sesuai dengan registrasi');
+});
+
+document.getElementById("password").addEventListener("mouseover", function() {
+    this.setAttribute('title', 'isikan password sesuai dengan registrasi');
+});
+
+var TombolLogin = document.getElementById("TombolLogin");
+var usernameField = document.getElementById("username");
+var passwordField = document.getElementById("password");
+
+TombolLogin.addEventListener("mouseover", function() {
+    if (usernameField.value === "" || passwordField.value === "") {
+        TombolLogin.textContent = "Isikan Dulu Ya!";
+        TombolLogin.classList.add("hover-red");
+    }
+});
+
+TombolLogin.addEventListener("mouseout", function() {
+    TombolLogin.textContent = "Login";
+    TombolLogin.classList.remove("hover-red");
+});
 
 function handleGoogleLogin() {
     console.log('Google login clicked');
