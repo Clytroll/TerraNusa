@@ -1,20 +1,24 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+import db from "./config/Database.js";
+import router from "./routes/UserRoute.js";
 import session from "express-session";
 import { Sequelize } from "sequelize";
+import UserRoute from './routes/UserRoute.js'
 
+dotenv.config();
 const app = express();
-app.set('view engine', 'ejs');
 
-app.get('/login', (req, res) => {
-    res.render("login")
-});
+try {
+    await db.authenticate();
+    console.log('Database Connected...');
+} catch (error) {
+    console.error(error);
+}
 
-app.get('/signup', (req, res) => {
-    res.render("signup");
-})
+app.use(cors());
+app.use(express.json());
+app.use(router);
 
-const port = 3000;
-app.listen(port, ()=> {
-    console.log('Server up and running on port: ${port}');
-});
+app.listen(8080, ()=> console.log('Server running at port 8080'));
