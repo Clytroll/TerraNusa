@@ -31,7 +31,7 @@ $basePrice = 350000; // Harga dasar per orang
                             <img src="Gambar/Depok.jpg" alt="Pantai Depok" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/GumukPasir.jpg" alt="Gumuk Pasir" class="w-full h-full object-cover">
+                            <img src="Gambar/GumukBarchan.jpg" alt="Gumuk Pasir Barchan" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
                             <img src="Gambar/HutanPinus.jpg" alt="Hutan Pinus" class="w-full h-full object-cover">
