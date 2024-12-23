@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraNusa - Paket Travel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#245B4F',
-                        'secondary': '#6A9C89',
-                        'tertiary': '#C4DAD2',
-                        'background': '#E9EFEC',
-                    }
-                }
-            }
-        }
-    </script>
+<?php
+$pageTitle = "Paket Travel";
+require_once 'includes/header.php';
+require_once 'includes/navbar.php';
+?>
     <style>
-        .container-custom {
-            width: 85%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
 
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -42,29 +19,6 @@
         }
     </style>
 </head>
-<body class="bg-background">
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full transition-all duration-300 z-50">
-        <div class="container-custom mx-auto py-4 flex justify-between items-center">
-            <div class="h-10">
-                <a href="index.html" class="block">
-                    <img src="Gambar\LogoTerraNusa.png" alt="TerraNusa Logo" class="h-12 w-auto">
-                </a>
-            </div>
-            
-            <div class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-white hover:text-tertiary transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-tertiary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Beranda</a>
-                <a href="destinasi.html" class="text-white hover:text-tertiary transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-tertiary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Destinasi</a>
-                <a href="paket-travel.html" class="text-white hover:text-tertiary transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-tertiary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Paket Travel</a>
-                <a href="about.html" class="text-white hover:text-tertiary transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-tertiary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">About</a>
-            </div>
-            
-            <div class="flex space-x-2">
-                <button onclick="openModal('login')" class="bg-secondary/80 hover:bg-secondary px-4 py-2 rounded text-white transition-colors duration-300">Masuk</button>
-                <button onclick="openModal('register')" class="bg-tertiary/90 hover:bg-tertiary px-4 py-2 rounded text-primary transition-colors duration-300">Daftar</button>
-            </div>
-        </div>
-    </nav>
 
     <!-- Header Section -->
     <section class="pt-32 pb-16 bg-primary">
@@ -317,41 +271,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white py-8">
-        <div class="container-custom">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">TerraNusa</h3>
-                    <p class="text-gray-300">Jelajahi keindahan Indonesia bersama kami.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Tautan Cepat</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-300 hover:text-tertiary transition-colors">Beranda</a></li>
-                        <li><a href="destinasi.html" class="text-gray-300 hover:text-tertiary transition-colors">Destinasi</a></li>
-                        <li><a href="paket-travel.html" class="text-gray-300 hover:text-tertiary transition-colors">Paket Travel</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-tertiary transition-colors">About</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Hubungi Kami</h4>
-                    <p class="text-gray-300">Email: info@terranusa.com</p>
-                    <p class="text-gray-300">Telepon: +62 123 4567 890</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Ikuti Kami</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-tertiary transition-colors">Facebook</a>
-                        <a href="#" class="text-gray-300 hover:text-tertiary transition-colors">Twitter</a>
-                        <a href="#" class="text-gray-300 hover:text-tertiary transition-colors">Instagram</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-secondary/30 text-center">
-                <p class="text-gray-300">&copy; 2023 TerraNusa. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <?php
+require_once 'includes/footer.php';
+?>
 
     <!-- Scripts -->
     <script>

@@ -1,7 +1,6 @@
 <?php
 $basePrice = 300000; // Harga dasar per orang
 $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
-require 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">

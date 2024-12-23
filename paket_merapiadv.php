@@ -1,9 +1,12 @@
+<?php
+$basePrice = 450000; // Harga dasar per orang
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraNusa - Paket Pantai Selatan</title>
+    <title>TerraNusa - Merapi Adventure</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -45,7 +48,7 @@
                     <span>/</span>
                     <a href="paket-travel.html" class="hover:text-primary">Paket Travel</a>
                     <span>/</span>
-                    <span class="text-primary">Paket Pantai Selatan</span>
+                    <span class="text-primary">Merapi Adventure</span>
                 </div>
             </div>
 
@@ -54,17 +57,17 @@
                 <!-- Image Gallery -->
                 <div class="space-y-4">
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Tritis.jpg" alt="Pantai Parangtritis" class="w-full h-full object-cover">
+                        <img src="Gambar/Merapi.jpg" alt="Merapi Adventure" class="w-full h-full object-cover">
                     </div>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/Depok.jpg" alt="Pantai Depok" class="w-full h-full object-cover">
+                            <img src="Gambar/JeepMerapi.jpg" alt="Jeep Merapi" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/GumukPasir.jpg" alt="Gumuk Pasir" class="w-full h-full object-cover">
+                            <img src="Gambar/MuseumMerapi.jpg" alt="Museum Merapi" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/HutanPinus.jpg" alt="Hutan Pinus" class="w-full h-full object-cover">
+                            <img src="Gambar/BunkerMerapi.jpg" alt="Bunker Merapi" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -74,11 +77,11 @@
                     <div class="flex justify-between items-start mb-6">
                         <div>
                             <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm mb-2">One Day Trip</span>
-                            <h1 class="text-3xl font-bold text-primary">Paket Pantai Selatan</h1>
+                            <h1 class="text-3xl font-bold text-primary">Merapi Adventure</h1>
                         </div>
                         <div class="text-right">
                             <p class="text-sm text-gray-600">Mulai dari</p>
-                            <p class="text-3xl font-bold text-secondary">Rp 350.000</p>
+                            <p class="text-3xl font-bold text-secondary">Rp 450.000</p>
                             <p class="text-sm text-gray-600">per orang</p>
                         </div>
                     </div>
@@ -87,7 +90,7 @@
                     <div class="grid grid-cols-2 gap-4 mb-6">
                         <div class="bg-background rounded-lg p-4">
                             <p class="text-sm text-gray-600">Durasi</p>
-                            <p class="font-semibold">10 Jam (08.00 - 18.00)</p>
+                            <p class="font-semibold">7 Jam (07.00 - 14.00)</p>
                         </div>
                         <div class="bg-background rounded-lg p-4">
                             <p class="text-sm text-gray-600">Meeting Point</p>
@@ -99,27 +102,40 @@
                         </div>
                         <div class="bg-background rounded-lg p-4">
                             <p class="text-sm text-gray-600">Transportasi</p>
-                            <p class="font-semibold">Mobil AC</p>
+                            <p class="font-semibold">Jeep 4x4</p>
                         </div>
                     </div>
 
                     <!-- Booking Form -->
-                    <form>
+                    <form id="bookingForm" action="process_order.php" method="POST">
+                        <input type="hidden" name="package_id" value="3"> <!-- ID untuk Merapi Adventure -->
+                        <input type="hidden" name="package_price" value="450000">
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-gray-700 mb-2">Tanggal Tour</label>
-                                <input type="date" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                                <input type="date" id="tourDate" name="tourDate" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
                             </div>
                             <div>
                                 <label class="block text-gray-700 mb-2">Jumlah Peserta</label>
                                 <div class="flex items-center border border-gray-300 rounded-lg">
                                     <button type="button" onclick="decrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-l-lg">-</button>
-                                    <input type="number" id="participant-count" value="1" min="1" class="w-full p-3 text-center border-x border-gray-300 focus:outline-none">
+                                    <input type="number" id="participant-count" name="participantCount" value="1" min="1" class="w-full p-3 text-center border-x border-gray-300 focus:outline-none" onchange="updatePrice()" readonly>
                                     <button type="button" onclick="incrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-r-lg">+</button>
                                 </div>
                             </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Nomor HP</label>
+                                <input type="tel" id="customerPhone" name="customerPhone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required placeholder="Contoh: 08123456789">
+                            </div>
+                            <div class="bg-tertiary/20 p-4 rounded-lg">
+                                <div class="flex justify-between items-center text-lg font-semibold">
+                                    <span>Total Pembayaran:</span>
+                                    <span id="totalPrice" class="text-primary">Rp 450.000</span>
+                                    <input type="hidden" name="totalAmount" id="totalAmountInput" value="450000">
+                                </div>
+                            </div>
                             <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white py-3 rounded-lg transition-colors duration-300">
-                                Pesan Sekarang
+                                Lanjutkan ke Pembayaran
                             </button>
                         </div>
                     </form>
@@ -143,63 +159,63 @@
                     <div id="overview" class="bg-white rounded-lg p-6 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-primary mb-4">Deskripsi Paket</h2>
                         <p class="text-gray-600 mb-4">
-                            Nikmati pesona pantai selatan Yogyakarta dalam satu hari penuh petualangan! Paket wisata ini mengajak Anda menjelajahi keindahan Pantai Parangtritis yang legendaris, menyantap hidangan seafood segar di Pantai Depok, bermain di hamparan pasir Gumuk Pasir, dan bersantai di sejuknya Hutan Pinus.
+                            Rasakan sensasi petualangan dengan menjelajahi kawasan Gunung Merapi menggunakan Jeep 4x4! Paket ini mengajak Anda mengeksplorasi keindahan alam dan sejarah Gunung Merapi, dari Lava Tour yang menantang hingga kunjungan ke Museum Merapi yang edukatif.
                         </p>
                         <p class="text-gray-600">
-                            Cocok untuk keluarga, pasangan, maupun solo traveler yang ingin merasakan pengalaman wisata pantai selatan yang lengkap dengan dipandu oleh guide profesional yang berpengalaman.
+                            Anda akan diajak melihat sisa-sisa erupsi Merapi, mengunjungi bunker bersejarah, dan belajar tentang aktivitas vulkanik Gunung Merapi di museum. Cocok untuk pencinta alam dan petualangan yang ingin mendapatkan pengalaman unik di Yogyakarta.
                         </p>
                     </div>
 
-                    <!-- Itinerary Tab (Hidden by default) -->
+                    <!-- Itinerary Tab -->
                     <div id="itinerary" class="hidden bg-white rounded-lg p-6 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-primary mb-6">Jadwal Perjalanan</h2>
                         <div class="space-y-6">
                             <div class="flex gap-4">
-                                <div class="w-20 text-secondary font-bold">08:00</div>
+                                <div class="w-20 text-secondary font-bold">07:00</div>
                                 <div>
                                     <h3 class="font-bold text-primary">Penjemputan</h3>
-                                    <p class="text-gray-600">Penjemputan di hotel area Yogyakarta</p>
+                                    <p class="text-gray-600">Penjemputan di hotel dan perjalanan menuju basecamp</p>
                                 </div>
                             </div>
                             <div class="flex gap-4">
-                                <div class="w-20 text-secondary font-bold">09:30</div>
+                                <div class="w-20 text-secondary font-bold">08:00</div>
                                 <div>
-                                    <h3 class="font-bold text-primary">Pantai Parangtritis</h3>
-                                    <p class="text-gray-600">Mengunjungi pantai legendaris dengan pemandangan ombak yang spektakuler</p>
+                                    <h3 class="font-bold text-primary">Lava Tour</h3>
+                                    <p class="text-gray-600">Petualangan dengan Jeep 4x4 menyusuri jalur lava Merapi</p>
                                 </div>
                             </div>
                             <div class="flex gap-4">
-                                <div class="w-20 text-secondary font-bold">12:00</div>
+                                <div class="w-20 text-secondary font-bold">10:00</div>
+                                <div>
+                                    <h3 class="font-bold text-primary">Bunker Kaliadem</h3>
+                                    <p class="text-gray-600">Mengunjungi bunker bersejarah dan belajar tentang mitigasi bencana</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-20 text-secondary font-bold">11:30</div>
+                                <div>
+                                    <h3 class="font-bold text-primary">Museum Merapi</h3>
+                                    <p class="text-gray-600">Mengenal sejarah dan aktivitas Gunung Merapi</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-20 text-secondary font-bold">13:00</div>
                                 <div>
                                     <h3 class="font-bold text-primary">Makan Siang</h3>
-                                    <p class="text-gray-600">Menikmati hidangan seafood segar di Pantai Depok</p>
+                                    <p class="text-gray-600">Menikmati hidangan lokal khas lereng Merapi</p>
                                 </div>
                             </div>
                             <div class="flex gap-4">
-                                <div class="w-20 text-secondary font-bold">13:30</div>
-                                <div>
-                                    <h3 class="font-bold text-primary">Gumuk Pasir</h3>
-                                    <p class="text-gray-600">Eksplorasi gurun pasir dan aktivitas sandboarding (opsional)</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-20 text-secondary font-bold">15:30</div>
-                                <div>
-                                    <h3 class="font-bold text-primary">Hutan Pinus</h3>
-                                    <p class="text-gray-600">Bersantai dan foto-foto di hutan pinus yang sejuk</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-20 text-secondary font-bold">18:00</div>
+                                <div class="w-20 text-secondary font-bold">14:00</div>
                                 <div>
                                     <h3 class="font-bold text-primary">Kembali</h3>
-                                    <p class="text-gray-600">Perjalanan pulang ke hotel</p>
+                                    <p class="text-gray-600">Perjalanan kembali ke hotel</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Facility Tab (Hidden by default) -->
+                    <!-- Facility Tab -->
                     <div id="facility" class="hidden bg-white rounded-lg p-6 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-primary mb-6">Fasilitas Tour</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -210,13 +226,13 @@
                                         <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                         </svg>
-                                        Transportasi AC PP
+                                        Jeep 4x4 untuk Lava Tour
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                         </svg>
-                                        Makan siang seafood
+                                        Makan siang
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,7 +244,13 @@
                                         <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                         </svg>
-                                        Tiket masuk wisata
+                                        Tiket masuk lokasi wisata
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        Dokumentasi foto
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -251,7 +273,7 @@
                                         <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                         </svg>
-                                        Aktivitas opsional (sandboarding)
+                                        Tips untuk guide dan driver
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -264,94 +286,115 @@
                         </div>
                     </div>
                 </div>
-                
-                                <!-- Sidebar Content -->
-                                <div class="lg:col-span-1">
-                                    <!-- Similar Packages -->
-                                    <div class="bg-white rounded-lg p-6 shadow-lg mb-8">
-                                        <h3 class="text-xl font-bold text-primary mb-4">Paket Lainnya</h3>
-                                        <div class="space-y-4">
-                                            <a href="city-tour-detail.html" class="block p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors">
-                                                <div class="aspect-video rounded-lg overflow-hidden mb-3">
-                                                    <img src="Gambar/Malioboro.jpg" alt="City Tour" class="w-full h-full object-cover">
-                                                </div>
-                                                <h4 class="font-bold text-primary">City Tour Yogyakarta</h4>
-                                                <p class="text-sm text-gray-600">Mulai dari Rp 300.000</p>
-                                            </a>
-                                            <a href="merapi-detail.html" class="block p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors">
-                                                <div class="aspect-video rounded-lg overflow-hidden mb-3">
-                                                    <img src="Gambar/Merapi.jpg" alt="Merapi Tour" class="w-full h-full object-cover">
-                                                </div>
-                                                <h4 class="font-bold text-primary">Merapi Adventure</h4>
-                                                <p class="text-sm text-gray-600">Mulai dari Rp 450.000</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                
-                                    <!-- Need Help -->
-                                    <div class="bg-white rounded-lg p-6 shadow-lg">
-                                        <h3 class="text-xl font-bold text-primary mb-4">Butuh Bantuan?</h3>
-                                        <div class="space-y-4">
-                                            <a href="https://wa.me/1234567890" class="flex items-center gap-2 text-gray-600 hover:text-primary">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                                </svg>
-                                                +62 123 4567 890
-                                            </a>
-                                            <a href="mailto:info@terranusa.com" class="flex items-center gap-2 text-gray-600 hover:text-primary">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                                </svg>
-                                                info@terranusa.com
-                                            </a>
-                                        </div>
-                                    </div>
+
+                <!-- Sidebar Content -->
+                <div class="lg:col-span-1">
+                    <!-- Similar Packages -->
+                    <div class="bg-white rounded-lg p-6 shadow-lg mb-8">
+                        <h3 class="text-xl font-bold text-primary mb-4">Paket Lainnya</h3>
+                        <div class="space-y-4">
+                            <a href="city-tour-detail.php" class="block p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors">
+                                <div class="aspect-video rounded-lg overflow-hidden mb-3">
+                                    <img src="Gambar/Malioboro.jpg" alt="City Tour" class="w-full h-full object-cover">
                                 </div>
-                            </div>
+                                <h4 class="font-bold text-primary">City Tour Yogyakarta</h4>
+                                <p class="text-sm text-gray-600">Mulai dari Rp 300.000</p>
+                            </a>
+                            <a href="pantai-selatan-detail.php" class="block p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors">
+                                <div class="aspect-video rounded-lg overflow-hidden mb-3">
+                                    <img src="Gambar/Tritis.jpg" alt="Paket Pantai" class="w-full h-full object-cover">
+                                </div>
+                                <h4 class="font-bold text-primary">Paket Pantai Selatan</h4>
+                                <p class="text-sm text-gray-600">Mulai dari Rp 350.000</p>
+                            </a>
                         </div>
-                    </main>
-                
-                    <!-- Footer -->
-                    <footer class="bg-primary text-white py-8 mt-16">
-                        <!-- Footer content same as main page -->
-                    </footer>
-                
-                    <!-- Scripts -->
-                    <script>
-                        function switchTab(tabId) {
-                            // Hide all tabs
-                            document.getElementById('overview').classList.add('hidden');
-                            document.getElementById('itinerary').classList.add('hidden');
-                            document.getElementById('facility').classList.add('hidden');
-                            
-                            // Show selected tab
-                            document.getElementById(tabId).classList.remove('hidden');
-                            
-                            // Update tab buttons
-                            const buttons = document.querySelectorAll('[onclick^="switchTab"]');
-                            buttons.forEach(button => {
-                                button.classList.remove('text-primary', 'border-b-2', 'border-primary');
-                                button.classList.add('text-gray-600');
-                            });
-                            
-                            // Highlight active tab
-                            event.target.classList.remove('text-gray-600');
-                            event.target.classList.add('text-primary', 'border-b-2', 'border-primary');
-                        }
-                
-                        function incrementCount() {
-                            const input = document.getElementById('participant-count');
-                            const currentValue = parseInt(input.value);
-                            input.value = currentValue + 1;
-                        }
-                
-                        function decrementCount() {
-                            const input = document.getElementById('participant-count');
-                            const currentValue = parseInt(input.value);
-                            if (currentValue > 1) {
-                                input.value = currentValue - 1;
-                            }
-                        }
-                    </script>
-                </body>
-                </html>
+                    </div>
+
+                    <!-- Need Help -->
+                    <div class="bg-white rounded-lg p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-primary mb-4">Butuh Bantuan?</h3>
+                        <div class="space-y-4">
+                            <a href="tel:+6281234567890" class="flex items-center gap-2 text-gray-600 hover:text-primary">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                +62 812 3456 7890
+                            </a>
+                            <a href="mailto:info@terranusa.com" class="flex items-center gap-2 text-gray-600 hover:text-primary">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                info@terranusa.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8 mt-16">
+        <!-- Footer content same as main page -->
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.getElementById('overview').classList.add('hidden');
+            document.getElementById('itinerary').classList.add('hidden');
+            document.getElementById('facility').classList.add('hidden');
+            
+            // Show selected tab
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            // Update tab buttons
+            const buttons = document.querySelectorAll('[onclick^="switchTab"]');
+            buttons.forEach(button => {
+                button.classList.remove('text-primary', 'border-b-2', 'border-primary');
+                button.classList.add('text-gray-600');
+            });
+            
+            // Highlight active tab
+            event.target.classList.remove('text-gray-600');
+            event.target.classList.add('text-primary', 'border-b-2', 'border-primary');
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('id-ID', { 
+                style: 'currency', 
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0 
+            }).format(price);
+        }
+
+        function updatePrice() {
+            const count = parseInt(document.getElementById('participant-count').value);
+            const totalPrice = basePrice * count;
+            document.getElementById('totalPrice').textContent = formatPrice(totalPrice);
+            document.getElementById('totalAmountInput').value = totalPrice;
+        }
+
+        function incrementCount() {
+            const input = document.getElementById('participant-count');
+            const currentValue = parseInt(input.value);
+            input.value = currentValue + 1;
+            updatePrice();
+        }
+
+        function decrementCount() {
+            const input = document.getElementById('participant-count');
+            const currentValue = parseInt(input.value);
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+                updatePrice();
+            }
+        }
+
+        // Initialize price on page load
+        document.addEventListener('DOMContentLoaded', updatePrice);
+    </script>
+</body>
+</html>
