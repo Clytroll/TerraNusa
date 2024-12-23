@@ -1,7 +1,7 @@
 <?php
 // config.php
 $host = 'localhost';
-$dbname = 'terranusa';
+$dbname = 'terranusa_db';
 $username = 'root';
 $password = '';
 

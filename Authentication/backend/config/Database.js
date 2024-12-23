@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const db =  new  Sequelize('terranusaofc', 'root', '', {
+const db =  new  Sequelize('terranusa', 'root', '', {
     host:'localhost',
     dialect:'mysql'
 });
