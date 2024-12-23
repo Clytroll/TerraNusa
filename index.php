@@ -38,8 +38,11 @@
                 </ul>
             </nav>
             <div class="flex space-x-2">
-                <button onclick="openModal('login')" class="bg-secondary/80 px-4 py-2 rounded text-sm hover:bg-secondary transition">Masuk</button>
-                <button onclick="openModal('register')" class="bg-tertiary/90 text-primary px-4 py-2 rounded text-sm hover:bg-tertiary transition">Daftar</button>
+            <button onclick="window.location.href='login.php'" class="bg-secondary/80 px-4 py-2 rounded text-sm hover:bg-secondary transition">Masuk</button>
+            <button onclick="window.location.href='register.php'" class="bg-tertiary/90 text-primary px-4 py-2 rounded text-sm hover:bg-tertiary transition">
+                Daftar
+            </button>
+
             </div>
         </div>
     </header>
