@@ -2,7 +2,7 @@
 $db_host = 'localhost';
 $db_user = 'root';  // Sesuaikan dengan username database Anda
 $db_pass = '';      // Sesuaikan dengan password database Anda
-$db_name = 'terranusa_db';  // Sesuaikan dengan nama database Anda
+$db_name = 'terranusaofc';  // Sesuaikan dengan nama database Anda
 
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
