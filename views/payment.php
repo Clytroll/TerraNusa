@@ -1,23 +1,46 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 require_once '../includes/db.php';
 
+// Cek apakah ada order_id
 if (!isset($_SESSION['order_id'])) {
-    header("Location: ../index.php");
-    exit;
+    die("No order ID found in session");
 }
 
-$order_id = $_SESSION['order_id'];
-
 // Get order details
-$stmt = $conn->prepare("SELECT o.*, p.name as package_name FROM orders o JOIN packages p ON o.package_id = p.id WHERE o.id = ?");
+$order_id = $_SESSION['order_id'];
+$stmt = $conn->prepare("SELECT o.* FROM orders o WHERE o.id = ?");
+
+if (!$stmt) {
+    die("Error preparing statement: " . $conn->error);
+}
+
 $stmt->bind_param("i", $order_id);
 $stmt->execute();
-$order = $stmt->get_result()->fetch_assoc();
+$result = $stmt->get_result();
+$order = $result->fetch_assoc();
+
+if (!$order) {
+    die("Order not found in database");
+}
+
+// Get package info separately
+$pkg_stmt = $conn->prepare("SELECT name FROM packagess WHERE id = ?");
+if ($pkg_stmt) {
+    $pkg_stmt->bind_param("i", $order['package_id']);
+    $pkg_stmt->execute();
+    $pkg_result = $pkg_stmt->get_result();
+    $package = $pkg_result->fetch_assoc();
+    $order['packagess'] = $package ? $package['name'] : 'Unknown Package';
+}
 
 require_once '../includes/header.php';
 require_once '../includes/navbar.php';
 ?>
+
+<!-- Sisanya sama seperti sebelumnya -->
 
 <main class="pt-32">
     <div class="container-custom">
@@ -33,7 +56,7 @@ require_once '../includes/navbar.php';
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Paket:</span>
-                            <span class="font-medium"><?php echo $order['package_name']; ?></span>
+                            <span class="font-medium"><?php echo $order['packagess']; ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Tanggal Tour:</span>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Adventure Package";
 $basePrice = 2250000; // Base price per person
 

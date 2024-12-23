@@ -1,49 +1,58 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
-echo realpath('../includes/db.php'); // Tampilkan path absolut
-var_dump(file_exists('../includes/db.php')); // Periksa apakah file ada
-
-
-
+require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Debug data yang diterima
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    
     // Generate order code
     $order_code = 'TN' . date('ymd') . rand(1000, 9999);
 
-    // Get form data
-    $package_id = $_POST['package_id'];
-    $customer_name = $_POST['customer_name'];
-    $customer_phone = $_POST['customer_phone'];
-    $tour_date = $_POST['tourDate'];
-    $participant_count = $_POST['participantCount'];
-    $total_amount = $_POST['total_amount'];
-
     try {
-        // Insert order to database
+        // Pastikan semua data yang diperlukan ada
+        if (empty($_POST['package_id']) || empty($_POST['customer_name']) || 
+            empty($_POST['customer_phone']) || empty($_POST['tourDate']) || 
+            empty($_POST['participantCount']) || empty($_POST['total_amount'])) {
+            throw new Exception("Semua field harus diisi");
+        }
+
+        // Insert ke database
         $stmt = $conn->prepare("INSERT INTO orders (order_code, package_id, customer_name, customer_phone, tour_date, participant_count, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        
+        if (!$stmt) {
+            throw new Exception("Error preparing statement: " . $conn->error);
+        }
         
         $stmt->bind_param("sisssid", 
             $order_code,
-            $package_id,
-            $customer_name,
-            $customer_phone,
-            $tour_date,
-            $participant_count,
-            $total_amount
+            $_POST['package_id'],
+            $_POST['customer_name'],
+            $_POST['customer_phone'],
+            $_POST['tourDate'],
+            $_POST['participantCount'],
+            $_POST['total_amount']
         );
 
         if ($stmt->execute()) {
             $_SESSION['order_id'] = $stmt->insert_id;
             $_SESSION['order_code'] = $order_code;
+            
+            // Debug
+            echo "Order berhasil dibuat. ID: " . $_SESSION['order_id'];
+            echo "<br>Redirecting...";
+            
             header("Location: ../views/payment.php");
             exit;
         } else {
-            throw new Exception("Gagal menyimpan pesanan");
+            throw new Exception("Error executing statement: " . $stmt->error);
         }
     } catch (Exception $e) {
-        $_SESSION['error'] = $e->getMessage();
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-        exit;
+        echo "Error: " . $e->getMessage();
     }
 }
 ?>

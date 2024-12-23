@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Paket Travel";
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
