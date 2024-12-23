@@ -74,9 +74,21 @@ $basePrice = 350000; // Harga dasar per orang
                     </div>
 
                     <!-- Booking Form -->
-                    <form id="bookingForm" action="process_order.php" method="POST">
-                        <input type="hidden" name="package_id" value="2"> <!-- ID untuk Paket Pantai Selatan -->
-                        <input type="hidden" name="package_price" value="350000">
+                    <form action="process/process_order.php" method="POST">
+    <input type="hidden" name="package_id" value="<?php echo $package_id; ?>">
+    <input type="hidden" name="package_name" value="<?php echo $package_name; ?>">
+    <input type="hidden" name="base_price" value="<?php echo $basePrice; ?>">
+    
+    <div>
+        <label class="block text-gray-700 mb-2">Nama Lengkap</label>
+        <input type="text" name="customer_name" required 
+               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+    </div>
+    <div>
+        <label class="block text-gray-700 mb-2">No. HP</label>
+        <input type="tel" name="customer_phone" required 
+               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+    </div>
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-gray-700 mb-2">Tanggal Tour</label>

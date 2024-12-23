@@ -1,6 +1,10 @@
 <?php
 session_start();
-require_once '../includes/db.php';
+echo realpath('../includes/db.php'); // Tampilkan path absolut
+var_dump(file_exists('../includes/db.php')); // Periksa apakah file ada
+
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Generate order code
