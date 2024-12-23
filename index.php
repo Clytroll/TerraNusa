@@ -109,7 +109,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 text-center">Jelajahi Keindahan Yogyakarta dengan TerraNusa</h2>
                 <p class="text-white text-center mb-8 text-lg">Temukan destinasi wisata terbaik, penginapan nyaman, dan pengalaman perjalanan tak terlupakan.</p>
                 <div class="flex justify-center">
-                    <a href="destinasi.html" class="bg-secondary text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-opacity-90 transition duration-300">
+                    <a href="destinasi.php" class="bg-secondary text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-opacity-90 transition duration-300">
                         Mulai Petualangan
                     </a>
                 </div>
@@ -212,7 +212,7 @@
 
         <!-- Lihat Selengkapnya button -->
         <div class="flex justify-end mt-8">
-            <a href="destinasi.html" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white transition-all duration-300 rounded-lg">
+            <a href="destinasi.php" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white transition-all duration-300 rounded-lg">
                 <span>Lihat Selengkapnya</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -415,7 +415,7 @@
 
         <!-- Lihat Selengkapnya button -->
         <div class="flex justify-end mt-8">
-            <a href="paket-travel.html" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white transition-all duration-300 rounded-lg">
+            <a href="paket_travel.php" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white transition-all duration-300 rounded-lg">
                 <span>Lihat Selengkapnya</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
