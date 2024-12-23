@@ -781,7 +781,7 @@
             <!-- Destinasi 47 -->
             <div class="fade-in-up bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="relative">
-                    <img src="Gambar/Heha.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
+                    <img src="Gambar/HehaForest.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <h3 class="text-xl font-bold">Heha Forest</h3>
@@ -841,7 +841,7 @@
             <!-- Destinasi 52 -->
             <div class="fade-in-up bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="relative">
-                    <img src="Gambar/Heha.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
+                    <img src="Gambar/HehaForest.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <h3 class="text-xl font-bold">Heha Forest</h3>
@@ -901,7 +901,7 @@
             <!-- Destinasi 57 -->
             <div class="fade-in-up bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="relative">
-                    <img src="Gambar/Heha.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
+                    <img src="Gambar/HehaForest.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <h3 class="text-xl font-bold">Heha Forest</h3>
@@ -961,7 +961,7 @@
             <!-- Destinasi 62 -->
             <div class="fade-in-up bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="relative">
-                    <img src="Gambar/Heha.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
+                    <img src="Gambar/HehaForest.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <h3 class="text-xl font-bold">Heha Forest</h3>
@@ -1021,7 +1021,7 @@
             <!-- Destinasi 67 -->
             <div class="fade-in-up bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="relative">
-                    <img src="Gambar/Heha.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
+                    <img src="Gambar/HehaForest.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <h3 class="text-xl font-bold">Heha Forest</h3>
@@ -1081,7 +1081,7 @@
             <!-- Destinasi 72 -->
             <div class="fade-in-up bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="relative">
-                    <img src="Gambar/Heha.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
+                    <img src="Gambar/HehaForest.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <h3 class="text-xl font-bold">Heha Forest</h3>
@@ -1141,7 +1141,7 @@
             <!-- Destinasi 77 -->
             <div class="fade-in-up bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="relative">
-                    <img src="Gambar/Heha.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
+                    <img src="Gambar/HehaForest.jpg" alt="Heha Forest" class="w-full h-56 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <h3 class="text-xl font-bold">Heha Forest</h3>
