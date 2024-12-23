@@ -84,7 +84,7 @@ require_once 'includes/navbar.php';
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-secondary">Rp 350.000</span>
-                                <button class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</button>
+                                <a href="paket_pantaiselatan.php" class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ require_once 'includes/navbar.php';
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-secondary">Rp 300.000</span>
-                                <button class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</button>
+                                <a href="paket_citytour.php" class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -121,14 +121,14 @@ require_once 'includes/navbar.php';
                             <h3 class="text-xl font-bold text-primary mb-2">Merapi Adventure</h3>
                             <p class="text-gray-600 mb-4">Lava Tour Merapi, Museum Merapi, dan Bunker Kaliadem</p>
                             <ul class="text-sm text-gray-600 mb-4 list-disc list-inside">
-                                <li>Termasuk Jeep 4x4</li>
+                                <li>Termasuk Jeep 4x4 </li>
                                 <li>Makan siang lokal</li>
                                 <li>Guide profesional</li>
                                 <li>Dokumentasi</li>
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-secondary">Rp 450.000</span>
-                                <button class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</button>
+                                <a href="paket_merapiadventure.php" class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@ require_once 'includes/navbar.php';
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-secondary">Rp 850.000</span>
-                                <button class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</button>
+                                <a href="paket_nature.php" class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@ require_once 'includes/navbar.php';
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-secondary">Rp 1.750.000</span>
-                                <button class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</button>
+                                <a href="paket_cultural.php" class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@ require_once 'includes/navbar.php';
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-secondary">Rp 2.250.000</span>
-                                <button class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</button>
+                                <a href="paket_adventure.php" class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -237,7 +237,7 @@ require_once 'includes/navbar.php';
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-secondary">Rp 3.500.000</span>
-                                <button class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</button>
+                                <a href="paket_complete.php" class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -261,7 +261,7 @@ require_once 'includes/navbar.php';
                             </ul>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-secondary">Rp 5.500.000</span>
-                                <button class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</button>
+                                <a href="paket_premium.php" class="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition">Detail</a>
                             </div>
                         </div>
                     </div>
