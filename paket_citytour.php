@@ -108,7 +108,7 @@ $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
                     </div>
 
                     <!-- Booking Form -->
-                    <form action="admin//process_order.php" method="POST">
+                    <form action="process_order.php" method="POST">
     <input type="hidden" name="package_id" value="<?php echo $package_id; ?>">
     <input type="hidden" name="package_name" value="<?php echo $package_name; ?>">
     <input type="hidden" name="base_price" value="<?php echo $basePrice; ?>">
@@ -136,10 +136,6 @@ $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
                 <input type="number" id="participant-count" name="participantCount" value="1" min="1" class="w-full p-3 text-center border-x border-gray-300 focus:outline-none" onchange="updatePrice()" readonly>
                 <button type="button" onclick="incrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-r-lg">+</button>
             </div>
-        </div>
-        <div>
-            <label class="block text-gray-700 mb-2">Nomor WhatsApp</label>
-            <input type="tel" id="customerPhone" name="customerPhone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required placeholder="Contoh: 08123456789">
         </div>
         <div class="bg-tertiary/20 p-4 rounded-lg">
             <div class="flex justify-between items-center text-lg font-semibold">
