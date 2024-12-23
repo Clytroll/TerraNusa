@@ -1,27 +1,45 @@
 <?php
-// process_order.php
-require_once 'config.php';
 session_start();
+require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Generate order code
+    $order_code = 'TN' . date('ymd') . rand(1000, 9999);
+
+    // Get form data
     $package_id = $_POST['package_id'];
-    $phone = $_POST['customerPhone'];
+    $customer_name = $_POST['customer_name'];
+    $customer_phone = $_POST['customer_phone'];
     $tour_date = $_POST['tourDate'];
     $participant_count = $_POST['participantCount'];
-    $total_amount = $_POST['totalAmount'];
-    
+    $total_amount = $_POST['total_amount'];
+
     try {
-        // Insert ke tabel orders
-        $order_number = generateOrderNumber();
-        $stmt = $pdo->prepare("INSERT INTO orders (order_number, package_id, customer_phone, tour_date, participant_count, total_amount) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$order_number, $package_id, $phone, $tour_date, $participant_count, $total_amount]);
+        // Insert order to database
+        $stmt = $conn->prepare("INSERT INTO orders (order_code, package_id, customer_name, customer_phone, tour_date, participant_count, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?)");
         
-        $order_id = $pdo->lastInsertId();
-        $_SESSION['order_id'] = $order_id;
-        
-        header('Location: payment.php');
+        $stmt->bind_param("sisssid", 
+            $order_code,
+            $package_id,
+            $customer_name,
+            $customer_phone,
+            $tour_date,
+            $participant_count,
+            $total_amount
+        );
+
+        if ($stmt->execute()) {
+            $_SESSION['order_id'] = $stmt->insert_id;
+            $_SESSION['order_code'] = $order_code;
+            header("Location: ../views/payment.php");
+            exit;
+        } else {
+            throw new Exception("Gagal menyimpan pesanan");
+        }
+    } catch (Exception $e) {
+        $_SESSION['error'] = $e->getMessage();
+        header("Location: " . $_SERVER['HTTP_REFERER']);
         exit;
-    } catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
 }
+?>
