@@ -121,7 +121,7 @@ require_once 'includes/navbar.php';
                             <h3 class="text-xl font-bold text-primary mb-2">Merapi Adventure</h3>
                             <p class="text-gray-600 mb-4">Lava Tour Merapi, Museum Merapi, dan Bunker Kaliadem</p>
                             <ul class="text-sm text-gray-600 mb-4 list-disc list-inside">
-                                <li>Termasuk Jeep 4x4</li>
+                                <li>Termasuk Jeep 4x4 </li>
                                 <li>Makan siang lokal</li>
                                 <li>Guide profesional</li>
                                 <li>Dokumentasi</li>
