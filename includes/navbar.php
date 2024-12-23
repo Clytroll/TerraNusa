@@ -1,3 +1,72 @@
+<?php
+// Koneksi ke Database
+$servername = "localhost";
+$username = "root"; // Ganti sesuai username database Anda
+$password = ""; // Ganti dengan password database Anda
+$database = "terranusa"; // Ganti dengan nama database Anda
+
+// Membuat koneksi
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Periksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+session_start();
+
+// Proses Login
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
+    $action = $_POST['action'];
+
+    if ($action === 'login') {
+        $email = $conn->real_escape_string($_POST['email']);
+        $password = $conn->real_escape_string($_POST['password']);
+
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                echo json_encode(['status' => 'success', 'message' => 'Login berhasil!', 'username' => $user['username']]);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Password salah!']);
+            }
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Email tidak ditemukan!']);
+        }
+        exit;
+    }
+
+    // Proses Register
+    if ($action === 'register') {
+        $username = $conn->real_escape_string($_POST['username']);
+        $email = $conn->real_escape_string($_POST['email']);
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+        $checkEmail = "SELECT * FROM users WHERE email = '$email'";
+        $result = $conn->query($checkEmail);
+
+        if ($result->num_rows > 0) {
+            echo json_encode(['status' => 'error', 'message' => 'Email sudah terdaftar!']);
+        } else {
+            $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+            if ($conn->query($sql) === TRUE) {
+                echo json_encode(['status' => 'success', 'message' => 'Registrasi berhasil!']);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Terjadi kesalahan saat registrasi.']);
+            }
+        }
+        exit;
+    }
+}
+
+$conn->close();
+?>
+
 <header id="navbar" class="bg-primary text-white transition-transform duration-300 ease-in-out">
     <div class="w-[85%] max-w-[1400px] mx-auto px-8 py-4 flex justify-between items-center">
         <div class="h-10">
