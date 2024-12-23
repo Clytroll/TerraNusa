@@ -18,3 +18,4 @@ try {
 function generateOrderNumber() {
     return 'TN' . date('Ymd') . rand(1000, 9999);
 }
+?>
