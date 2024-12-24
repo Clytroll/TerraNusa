@@ -21,7 +21,7 @@
             <?php else: ?>
                 <!-- Bagian untuk username dan gambar profil -->
                 <div class="flex items-center space-x-4">
-                    <img id="userProfilePic" src="default-profile.png" alt="Profile" class="h-8 w-8 rounded-full">
+                    <img id="userProfilePic" src="Gambar/Profil.jpg" alt="Profile" class="h-8 w-8 rounded-full">
                     <span id="usernameDisplay" class="text-sm font-semibold text-white"></span>
                 </div>
                 <a href="logout.php" class="bg-secondary/80 hover:bg-secondary px-4 py-2 rounded text-white">Logout</a>

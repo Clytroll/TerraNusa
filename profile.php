@@ -28,7 +28,7 @@ $user = $result->fetch_assoc();
             <form action="auth/update_profile.php" method="POST" enctype="multipart/form-data" class="space-y-6">
                 <div class="flex items-center space-x-6">
                     <div class="flex-shrink-0">
-                        <img src="<?php echo $user['profile_image'] ?? 'default-profile.png'; ?>" 
+                        <img src="<?php echo $user['profile_image'] ?? 'Gambar/Profil.jpg'; ?>" 
                              alt="Profile" 
                              class="h-32 w-32 rounded-full object-cover">
                     </div>
