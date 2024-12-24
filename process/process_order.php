@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Order berhasil dibuat. ID: " . $_SESSION['order_id'];
             echo "<br>Redirecting...";
             
-            header("Location: ../views/payment.php");
+            header("Location: ../payment.php");
             exit;
         } else {
             throw new Exception("Error executing statement: " . $stmt->error);

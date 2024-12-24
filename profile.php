@@ -25,7 +25,7 @@ $user = $result->fetch_assoc();
         <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
             <h1 class="text-2xl font-bold text-primary mb-6">Profil Saya</h1>
 
-            <form action="profile/update_profile.php" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <form action="auth/update_profile.php" method="POST" enctype="multipart/form-data" class="space-y-6">
                 <div class="flex items-center space-x-6">
                     <div class="flex-shrink-0">
                         <img src="<?php echo $user['profile_image'] ?? 'default-profile.png'; ?>" 
@@ -83,7 +83,7 @@ $user = $result->fetch_assoc();
     <script>
     function confirmDelete() {
         if (confirm('Anda yakin ingin menghapus akun? Tindakan ini tidak dapat dibatalkan.')) {
-            window.location.href = 'delete_account.php';
+            window.location.href = 'auth/delete_account.php';
         }
     }
     </script>

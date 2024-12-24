@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
-require_once '../includes/db.php';
+require_once 'includes/db.php';
 
 // Cek apakah ada order_id
 if (!isset($_SESSION['order_id'])) {
@@ -36,8 +36,8 @@ if ($pkg_stmt) {
     $order['packagess'] = $package ? $package['name'] : 'Unknown Package';
 }
 
-require_once '../includes/header.php';
-require_once '../includes/navbar.php';
+require_once 'includes/header.php';
+require_once 'includes/navbar.php';
 ?>
 
 <!-- Sisanya sama seperti sebelumnya -->
@@ -90,7 +90,7 @@ require_once '../includes/navbar.php';
                 </div>
 
                 <div class="text-center">
-                    <a href="../index.php" class="text-primary hover:text-primary/80">
+                    <a href="index.php" class="text-primary hover:text-primary/80">
                         Kembali ke Beranda
                     </a>
                 </div>
@@ -99,4 +99,4 @@ require_once '../includes/navbar.php';
     </div>
 </main>
 
-<?php require_once '../includes/footer.php'; ?>
+<?php require_once 'includes/footer.php'; ?>

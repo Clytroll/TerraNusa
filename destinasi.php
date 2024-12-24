@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -196,27 +199,10 @@
 
 <body class="bg-background">
     <!-- Navbar -->
-    <header id="navbar" class="text-white">
-        <div class="container-custom mx-auto py-4 flex justify-between items-center">
-            <div class="h-10">
-                <a href="index.html" class="block">
-                    <img src= "Gambar\LogoTerraNusa.png" alt="TerraNusa Logo" class="h-12 w-auto">
-                </a>
-            </div>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="index.html" class="nav-link hover:text-tertiary text-sm">Beranda</a></li>
-                    <li><a href="destinasi.html" class="nav-link hover:text-tertiary text-sm">Destinasi</a></li>
-                    <li><a href="paket-travel.html" class="nav-link hover:text-tertiary text-sm">Paket Travel</a></li>
-                    <li><a href="about.html" class="nav-link hover:text-tertiary text-sm">About</a></li>
-                </ul>
-            </nav>
-            <div class="flex space-x-2">
-                <button onclick="openModal('login')" class="bg-secondary/80 px-4 py-2 rounded text-sm hover:bg-secondary transition">Masuk</button>
-                <button onclick="openModal('register')" class="bg-tertiary/90 text-primary px-4 py-2 rounded text-sm hover:bg-tertiary transition">Daftar</button>
-            </div>
-        </div>
-    </header>
+
+<?php
+require_once 'includes/navbar.php';
+?>
 
     <!-- Destinasi Section -->
     <section class="relative py-20" id="destinasi">
@@ -1189,32 +1175,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap justify-between">
-                <div class="w-full md:w-1/4 mb-4 md:mb-0">
-                    <h3 class="text-xl font-bold mb-2">TerraNusa</h3>
-                    <p>Jelajahi keindahan Indonesia bersama kami.</p>
-                </div>
-                <div class="w-full md:w-1/4 mb-4 md:mb-0">
-                    <h4 class="font-bold mb-2">Hubungi Kami</h4>
-                    <p>Email: info@terranusa.com</p>
-                    <p>Telepon: +62 123 4567 890</p>
-                </div>
-                <div class="w-full md:w-1/4">
-                    <h4 class="font-bold mb-2">Ikuti Kami</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="hover:text-tertiary">Facebook</a>
-                        <a href="#" class="hover:text-tertiary">Twitter</a>
-                        <a href="#" class="hover:text-tertiary">Instagram</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-secondary text-center">
-                <p>&copy; 2023 TerraNusa. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <?php
+require_once 'includes/footer.php';
+?>
 
     <!-- Scripts -->
     <script>

@@ -10,7 +10,7 @@
                 <li><a href="index.php" class="text-sm hover:text-tertiary relative py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-tertiary after:transition-all after:duration-300 hover:after:w-full">Beranda</a></li>
                 <li><a href="destinasi.php" class="text-sm hover:text-tertiary relative py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-tertiary after:transition-all after:duration-300 hover:after:w-full">Destinasi</a></li>
                 <li><a href="paket_travel.php" class="text-sm hover:text-tertiary relative py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-tertiary after:transition-all after:duration-300 hover:after:w-full">Paket Travel</a></li>
-                <li><a href="about.php" class="text-sm hover:text-tertiary relative py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-tertiary after:transition-all after:duration-300 hover:after:w-full">About</a></li>
+                <li><a href="profile.php" class="text-sm hover:text-tertiary relative py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-tertiary after:transition-all after:duration-300 hover:after:w-full">Profile</a></li>
             </ul>
         </nav>
         <div class="flex space-x-2" id="userSection">
@@ -64,7 +64,7 @@
 
         <!-- Link untuk admin di pojok kanan bawah -->
         <div class="mt-4 text-right">
-            <a href="/admin/login.php" class="text-xs text-gray-500 hover:text-secondary">admin</a>
+            <a href="../../admin/login.php" class="text-xs text-gray-500 hover:text-secondary">admin</a>
         </div>
     </div>
 </div>
@@ -146,42 +146,76 @@ function updateUIAfterAuth(username, profilePic = 'default-profile.png') {
 }
 
 // Handle form submission
-document.getElementById('authForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
+document.getElementById('authForm').addEventListener('submit', function(e) {
+    e.preventDefault();
     
-    const formData = new FormData(event.target);
-    const authType = formData.get('authType');
+    const formData = new FormData(this);
     
-    try {
-        const response = await fetch('profile/auth_handler.php', {
-            method: 'POST',
-            body: formData
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            // Update UI based on the response
-            updateUIAfterAuth(
-                authType === 'register' ? formData.get('username') : data.username,
-                data.profileImage || 'default-profile.png'
-            );
-            
-            // Optional: Reload page to ensure session is updated
-             window.location.reload();
+    fetch('auth/auth_handler.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert(data.message); // Atau gunakan notifikasi yang lebih menarik
+            if (formData.get('authType') === 'register') {
+                // Update UI setelah register berhasil
+                updateUserSection(formData.get('username'), 'default-profile.png');
+            } else {
+                // Reload halaman setelah login berhasil
+                window.location.reload();
+            }
+            closeModal();
         } else {
-            alert(data.message || 'Authentication failed');
+            alert(data.message);
         }
-    } catch (error) {
+    })
+    .catch(error => {
         console.error('Error:', error);
-        alert('An error occurred during authentication');
-    }
+        alert('Terjadi kesalahan, silakan coba lagi');
+    });
 });
 
-// Close modal when clicking outside
-document.getElementById('authModal').addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        closeModal();
+function updateUserSection(username, profileImage) {
+    const userSection = document.getElementById('userSection');
+    userSection.innerHTML = `
+        <div class="flex items-center space-x-4">
+            <a href="../update_profile.php" class="flex items-center space-x-2">
+                <img src="${profileImage}" alt="Profile" class="h-8 w-8 rounded-full">
+                <span class="text-sm font-semibold text-white">${username}</span>
+            </a>
+            <a href="auth/logout.php" class="bg-secondary/80 hover:bg-secondary px-4 py-2 rounded text-white">Logout</a>
+        </div>
+    `;
+}
+
+// Function untuk membuka modal dengan tipe yang sesuai
+function openModal(type) {
+    const modal = document.getElementById('authModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const submitButtonText = document.getElementById('submitButtonText');
+    const usernameField = document.getElementById('usernameField');
+    const authTypeInput = document.getElementById('authType');
+    
+    modal.style.display = 'block';
+    
+    if (type === 'login') {
+        modalTitle.textContent = "Masuk";
+        submitButtonText.textContent = "Masuk";
+        usernameField.style.display = 'none';
+        authTypeInput.value = 'login';
+    } else {
+        modalTitle.textContent = "Daftar";
+        submitButtonText.textContent = "Daftar";
+        usernameField.style.display = 'block';
+        authTypeInput.value = 'register';
     }
-});
+}
+
+// Function untuk menutup modal
+function closeModal() {
+    const modal = document.getElementById('authModal');
+    modal.style.display = 'none';
+}
 </script>
