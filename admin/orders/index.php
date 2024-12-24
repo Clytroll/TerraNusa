@@ -12,9 +12,9 @@ $status = $_GET['status'] ?? 'all';
 $search = $_GET['search'] ?? '';
 
 // Build query
-$query = "SELECT o.*, p.name as package_name 
+$query = "SELECT o.*, p.name as packagess 
           FROM orders o 
-          JOIN packages p ON o.package_id = p.id 
+          JOIN packagess p ON o.package_id = p.id 
           WHERE 1=1";
 
 if ($status !== 'all') {
@@ -56,7 +56,7 @@ $orders = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
                                class="px-4 py-2 border rounded-lg">
                         <select name="status" class="px-4 py-2 border rounded-lg">
                             <option value="all" <?php echo $status === 'all' ? 'selected' : ''; ?>>
-                            <option value="all" <?php echo $status === 'all' ? 'selected' : ''; ?>>Semua Status</option>
+                                <option value="all" <?php echo $status === 'all' ? 'selected' : ''; ?>>Semua Status</option>
                             <option value="pending" <?php echo $status === 'pending' ? 'selected' : ''; ?>>Pending</option>
                             <option value="paid" <?php echo $status === 'paid' ? 'selected' : ''; ?>>Lunas</option>
                             <option value="cancelled" <?php echo $status === 'cancelled' ? 'selected' : ''; ?>>Batal</option>
@@ -121,7 +121,7 @@ $orders = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
                                     <div class="text-sm text-gray-500"><?php echo $order['customer_phone']; ?></div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <?php echo $order['package_name']; ?>
+                                    <?php echo $order['packagess']; ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                     Rp <?php echo number_format($order['total_amount'], 0, ',', '.'); ?>

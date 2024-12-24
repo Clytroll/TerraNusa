@@ -9,9 +9,9 @@ if (!isset($_SESSION['admin_id'])) {
 
 $order_id = $_GET['id'] ?? 0;
 $stmt = $conn->prepare("
-    SELECT o.*, p.name as package_name, p.duration 
+    SELECT o.*, p.name as packagess, p.duration 
     FROM orders o 
-    JOIN packages p ON o.package_id = p.id 
+    JOIN packagess p ON o.package_id = p.id 
     WHERE o.id = ?
 ");
 $stmt->bind_param("i", $order_id);
@@ -59,7 +59,7 @@ if (!$order) {
                             <dl class="grid grid-cols-2 gap-4">
                                 <div>
                                     <dt class="text-sm text-gray-500">Paket Wisata</dt>
-                                    <dd class="font-medium"><?php echo $order['package_name']; ?></dd>
+                                    <dd class="font-medium"><?php echo $order['packagess']; ?></dd>
                                 </div>
                                 <div>
                                     <dt class="text-sm text-gray-500">Durasi</dt>

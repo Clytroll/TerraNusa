@@ -16,9 +16,9 @@ $total_revenue = $conn->query("SELECT SUM(total_amount) as total FROM orders WHE
 
 // Get recent orders
 $recent_orders = $conn->query("
-    SELECT o.*, p.name as package_name 
+    SELECT o.*, p.name as packagess 
     FROM orders o 
-    JOIN packages p ON o.package_id = p.id 
+    JOIN packagess p ON o.package_id = p.id 
     ORDER BY o.created_at DESC 
     LIMIT 5
 ")->fetch_all(MYSQLI_ASSOC);
@@ -113,7 +113,7 @@ $recent_orders = $conn->query("
                                         </a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <?php echo $order['package_name']; ?>
+                                        <?php echo $order['packagess']; ?>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <?php echo $order['customer_name']; ?>

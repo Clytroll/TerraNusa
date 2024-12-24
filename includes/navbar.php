@@ -64,7 +64,7 @@
 
         <!-- Link untuk admin di pojok kanan bawah -->
         <div class="mt-4 text-right">
-            <a href="../../admin/login.php" class="text-xs text-gray-500 hover:text-secondary">admin</a>
+            <a href="admin\login.php" class="text-xs text-gray-500 hover:text-secondary">admin</a>
         </div>
     </div>
 </div>
