@@ -26,7 +26,7 @@ $basePrice = 350000;
                 <!-- Image Gallery -->
                 <div class="space-y-4">
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Tritis.jpg" alt="Pantai Parangtritis" class="w-full h-full object-cover">
+                        <img src="Gambar/Tritis.jpg"alt="Pantai Parangtritis" class="w-full h-full object-cover">
                     </div>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="aspect-video rounded-lg overflow-hidden">
