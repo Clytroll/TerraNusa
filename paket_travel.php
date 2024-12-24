@@ -29,38 +29,6 @@ require_once 'includes/navbar.php';
         </div>
     </section>
 
-    <!-- Filter Section -->
-    <div class="sticky top-20 bg-white shadow-md z-40">
-        <div class="container-custom py-4">
-            <div class="flex space-x-4 overflow-x-auto no-scrollbar">
-                <button id="btn-all" 
-                        onclick="filterPackages('all')" 
-                        class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 bg-primary text-white">
-                    Semua Paket
-                </button>
-                <button id="btn-oneday" 
-                        onclick="filterPackages('oneday')" 
-                        class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">
-                    One Day Trip
-                </button>
-                <button id="btn-2d1n" 
-                        onclick="filterPackages('2d1n')" 
-                        class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">
-                    2D1N
-                </button>
-                <button id="btn-3d2n" 
-                        onclick="filterPackages('3d2n')" 
-                        class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">
-                    3D2N
-                </button>
-                <button id="btn-4d3n" 
-                        onclick="filterPackages('4d3n')" 
-                        class="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">
-                    4D3N
-                </button>
-            </div>
-        </div>
-    </div>
     <!-- Main Content -->
     <main class="py-16">
         <div class="container-custom">

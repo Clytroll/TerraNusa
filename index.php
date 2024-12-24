@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$pageTitle = "Beranda";
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 ?>
