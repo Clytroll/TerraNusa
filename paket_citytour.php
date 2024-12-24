@@ -69,7 +69,7 @@ $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
                             <img src="Gambar/TamanSari.jpg" alt="Taman Sari" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/Beringharjo.jpg" alt="Pasar Beringharjo" class="w-full h-full object-cover">
+                            <img src="Gambar/PasarBeringharjo.jpg" alt="Pasar Beringharjo" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>

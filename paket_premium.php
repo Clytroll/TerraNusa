@@ -24,17 +24,17 @@ require_once 'includes/navbar.php';
             <!-- Image Gallery -->
             <div class="space-y-4">
                 <div class="aspect-video rounded-lg overflow-hidden">
-                    <img src="Gambar/Premium-Hotel.jpg" alt="Luxury Hotel" class="w-full h-full object-cover">
+                    <img src="Gambar/Luxury.jpg" alt="Luxury Hotel" class="w-full h-full object-cover">
                 </div>
                 <div class="grid grid-cols-3 gap-4">
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Premium-Dining.jpg" alt="Fine Dining" class="w-full h-full object-cover">
+                        <img src="Gambar/Dining.jpg" alt="Fine Dining" class="w-full h-full object-cover">
                     </div>
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Premium-Spa.jpg" alt="Luxury Spa" class="w-full h-full object-cover">
+                        <img src="Gambar/Spa.jpg" alt="Luxury Spa" class="w-full h-full object-cover">
                     </div>
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Premium-Transport.jpg" alt="Premium Transport" class="w-full h-full object-cover">
+                        <img src="Gambar/Transport.jpg" alt="Premium Transport" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>

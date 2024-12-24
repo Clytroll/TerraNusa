@@ -12,7 +12,7 @@ require_once 'includes/navbar.php';
         
         .no-scrollbar {
             -ms-overflow-style: none;
-            scrollbar-width: none;
+             scrollbar-width: none;
         }
 
         main {

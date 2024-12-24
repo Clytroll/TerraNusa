@@ -61,13 +61,13 @@ $basePrice = 450000; // Harga dasar per orang
                     </div>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/JeepMerapi.jpg" alt="Jeep Merapi" class="w-full h-full object-cover">
+                            <img src="Gambar/Jeep.jpg" alt="Jeep Merapi" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/MuseumMerapi.jpg" alt="Museum Merapi" class="w-full h-full object-cover">
+                            <img src="Gambar/Museum.jpg" alt="Museum Merapi" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/BunkerMerapi.jpg" alt="Bunker Merapi" class="w-full h-full object-cover">
+                            <img src="Gambar/Bunker Kali Adem.jpg" alt="Bunker Merapi" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>

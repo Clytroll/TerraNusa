@@ -34,7 +34,7 @@ require_once 'includes/navbar.php';
                         <img src="Gambar/Merapi.jpg" alt="Merapi" class="w-full h-full object-cover">
                     </div>
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Parangtritis.jpg" alt="Parangtritis" class="w-full h-full object-cover">
+                        <img src="Gambar/Tritis.jpg" alt="Parangtritis" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
