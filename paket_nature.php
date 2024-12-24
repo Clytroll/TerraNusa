@@ -26,17 +26,17 @@ $basePrice = 850000; // Harga dasar per orang
                 <!-- Image Gallery -->
                 <div class="space-y-4">
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Heha.jpg" alt="Heha Sky View" class="w-full h-full object-cover">
+                        <img src="Gambar/HehaForest.jpg" alt="Heha Sky View" class="w-full h-full object-cover">
                     </div>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="aspect-video rounded-lg overflow-hidden">
                             <img src="Gambar/Kalibiru.jpg" alt="Kalibiru" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/PinusPengger.jpg" alt="Pinus Pengger" class="w-full h-full object-cover">
+                            <img src="Gambar/Pinus.jpg" alt="Pinus Pengger" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/TebingBreksi.jpg" alt="Tebing Breksi" class="w-full h-full object-cover">
+                            <img src="Gambar/Tebing.jpg" alt="Tebing Breksi" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>

@@ -28,13 +28,13 @@ require_once 'includes/navbar.php';
                 </div>
                 <div class="grid grid-cols-3 gap-4">
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Goa-Pindul.jpg" alt="Goa Pindul" class="w-full h-full object-cover">
+                        <img src="Gambar/GoaPindul.jpg" alt="Goa Pindul" class="w-full h-full object-cover">
                     </div>
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Pantai-Timang.jpg" alt="Pantai Timang" class="w-full h-full object-cover">
+                        <img src="Gambar/Pantai Timang.jpg" alt="Pantai Timang" class="w-full h-full object-cover">
                     </div>
                     <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Gambar/Goa-Jomblang.jpg" alt="Goa Jomblang" class="w-full h-full object-cover">
+                        <img src="Gambar/GoaJomblang.jpg" alt="Goa Jomblang" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>

@@ -30,7 +30,7 @@ $basePrice = 350000;
                     </div>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="aspect-video rounded-lg overflow-hidden">
-                            <img src="Gambar/Depok.jpg" alt="Pantai Depok" class="w-full h-full object-cover">
+                            <img src="Gambar/PantaiDepok.jpg" alt="Pantai Depok" class="w-full h-full object-cover">
                         </div>
                         <div class="aspect-video rounded-lg overflow-hidden">
                             <img src="Gambar/Gumuk.jpg" alt="Gumuk Pasir Barchan" class="w-full h-full object-cover">
