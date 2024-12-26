@@ -1,58 +1,17 @@
 <?php
 session_start();
-$basePrice = 300000; // Harga dasar per orang
-$waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
+$pageTitle = "Paket City Tour";
+$package_id = 2; // Sesuaikan dengan ID paket di database
+$package_name = "Paket Pantai Selatan";
+require_once 'includes/header.php';
+require_once 'includes/navbar.php';
+$basePrice = 300000;
 ?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraNusa - City Tour Yogyakarta</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#245B4F',
-                        'secondary': '#6A9C89',
-                        'tertiary': '#C4DAD2',
-                        'background': '#E9EFEC',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .container-custom {
-            width: 85%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-    </style>
-</head>
-<body class="bg-background">
-    <!-- Navbar -->
-    <nav class="fixed w-full bg-primary/95 backdrop-blur-md z-50">
-        <!-- Same navbar as before -->
-    </nav>
-
     <!-- Main Content -->
     <main class="pt-32">
         <div class="container-custom">
             <!-- Breadcrumb -->
-            <div class="mb-6">
-                <div class="flex items-center space-x-2 text-sm text-gray-600">
-                    <a href="index.html" class="hover:text-primary">Beranda</a>
-                    <span>/</span>
-                    <a href="paket-travel.html" class="hover:text-primary">Paket Travel</a>
-                    <span>/</span>
-                    <span class="text-primary">City Tour Yogyakarta</span>
-                </div>
-            </div>
+            
 
             <!-- Package Header -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -109,7 +68,7 @@ $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
                     </div>
 
                     <!-- Booking Form -->
-                    <form action="process_order.php" method="POST">
+                    <form action="./process/process_order.php" method="POST">
     <input type="hidden" name="package_id" value="<?php echo $package_id; ?>">
     <input type="hidden" name="package_name" value="<?php echo $package_name; ?>">
     <input type="hidden" name="base_price" value="<?php echo $basePrice; ?>">
@@ -124,7 +83,6 @@ $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
         <input type="tel" name="customer_phone" required 
                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
     </div>
-    <!-- Form lainnya tetap sama -->
     <div class="space-y-4">
         <div>
             <label class="block text-gray-700 mb-2">Tanggal Tour</label>
@@ -142,18 +100,17 @@ $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
             <div class="flex justify-between items-center text-lg font-semibold">
                 <span>Total Pembayaran:</span>
                 <span id="totalPrice" class="text-primary">Rp 300.000</span>
+                <!-- Input tersembunyi untuk total_amount -->
+                <input type="hidden" name="total_amount" id="totalAmountInput" value="300000">
             </div>
         </div>
-        <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white py-3 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-            </svg>
-            Pesan via WhatsApp
+        <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white py-3 rounded-lg transition-colors duration-300">
+            Lanjutkan ke Pembayaran
         </button>
     </div>
 </form>
-                </div>
-            </div>
+</div>
+</div>
 
             <!-- Tabs Navigation -->
             <div class="mb-8">
@@ -353,11 +310,7 @@ $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-primary text-white py-8 mt-16">
-        <!-- Footer content same as main page -->
-    </footer>
-
+<?php require_once 'includes/footer.php';?>
     <!-- Scripts -->
     <script>
         function switchTab(tabId) {
@@ -381,69 +334,50 @@ $waNumber = "6281234567890"; // Nomor WhatsApp admin (ganti sesuai kebutuhan)
             event.target.classList.add('text-primary', 'border-b-2', 'border-primary');
         }
 
-        const basePrice = <?php echo $basePrice; ?>;
-        const waNumber = "<?php echo $waNumber; ?>";
+        // Definisi harga dasar
+    const basePrice = <?php echo $basePrice; ?>; 
 
-        function formatPrice(price) {
-            return new Intl.NumberFormat('id-ID', { 
-                style: 'currency', 
-                currency: 'IDR',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0 
-            }).format(price);
-        }
+// Format harga ke format Rupiah
+function formatPrice(price) {
+    return new Intl.NumberFormat('id-ID', { 
+        style: 'currency', 
+        currency: 'IDR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0 
+    }).format(price);
+}
 
-        function updatePrice() {
-            const count = parseInt(document.getElementById('participant-count').value);
-            const totalPrice = basePrice * count;
-            document.getElementById('totalPrice').textContent = formatPrice(totalPrice);
-        }
+// Update total harga berdasarkan jumlah peserta
+function updatePrice() {
+    const count = parseInt(document.getElementById('participant-count').value);
+    const totalPrice = basePrice * count;
+    document.getElementById('totalPrice').textContent = formatPrice(totalPrice);
+    document.getElementById('totalAmountInput').value = totalPrice;
+}
 
-        function incrementCount() {
-            const input = document.getElementById('participant-count');
-            const currentValue = parseInt(input.value);
-            input.value = currentValue + 1;
-            updatePrice();
-        }
+// Fungsi untuk menambah jumlah peserta
+function incrementCount() {
+    const input = document.getElementById('participant-count');
+    const currentValue = parseInt(input.value);
+    input.value = currentValue + 1;
+    updatePrice();
+}
 
-        function decrementCount() {
-            const input = document.getElementById('participant-count');
-            const currentValue = parseInt(input.value);
-            if (currentValue > 1) {
-                input.value = currentValue - 1;
-                updatePrice();
-            }
-        }
+// Fungsi untuk mengurangi jumlah peserta
+function decrementCount() {
+    const input = document.getElementById('participant-count');
+    const currentValue = parseInt(input.value);
+    if (currentValue > 1) {
+        input.value = currentValue - 1;
+        updatePrice();
+    }
+}
 
-        function submitForm(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('customerName').value;
-            const phone = document.getElementById('customerPhone').value;
-            const date = document.getElementById('tourDate').value;
-            const count = document.getElementById('participant-count').value;
-            const total = basePrice * parseInt(count);
-
-            // Format pesan WhatsApp
-            const message = `Halo, saya ingin memesan City Tour Yogyakarta dengan detail:
-            
-Nama: ${name}
-No. HP: ${phone}
-Tanggal: ${date}
-Jumlah Peserta: ${count} orang
-Total Pembayaran: ${formatPrice(total)}
-
-Mohon dibantu proses pemesanannya. Terima kasih!`;
-
-            // Encode pesan untuk URL WhatsApp
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Redirect ke WhatsApp
-            window.open(`https://wa.me/${waNumber}?text=${encodedMessage}`, '_blank');
-        }
-
-        // Initialize price on page load
-        document.addEventListener('DOMContentLoaded', updatePrice);
-    </script>
+// Initialize price on page load
+document.addEventListener('DOMContentLoaded', updatePrice);
+</script>
+<script>
+const basePrice = <?php echo $basePrice; ?>; // Definisi harga dasar
+</script>
 </body>
 </html>

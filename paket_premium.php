@@ -1,24 +1,15 @@
 <?php
-$pageTitle = "Premium Experience Package";
-$basePrice = 5500000; // Base price per person
-
+session_start();
+$pageTitle = "Paket Premium Experience";
+$package_id = 8; // Sesuaikan dengan ID paket di database
+$package_name = "Paket Premium Experience";
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
+$basePrice = 5500000;
 ?>
 
 <main class="pt-32">
-    <div class="container-custom">
-        <!-- Breadcrumb -->
-        <div class="mb-6">
-            <div class="flex items-center space-x-2 text-sm text-gray-600">
-                <a href="index.html" class="hover:text-primary">Beranda</a>
-                <span>/</span>
-                <a href="paket-travel.html" class="hover:text-primary">Paket Travel</a>
-                <span>/</span>
-                <span class="text-primary">Premium Experience (4D3N)</span>
-            </div>
-        </div>
-
+<div class="container-custom">
         <!-- Package Header -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <!-- Image Gallery -->
@@ -98,40 +89,49 @@ require_once 'includes/navbar.php';
                 </div>
 
                 <!-- Booking Form -->
-                <form id="bookingForm" action="process_order.php" method="POST">
-                    <input type="hidden" name="package_id" value="8"> <!-- ID untuk Premium Experience -->
-                    <input type="hidden" name="package_price" value="5500000">
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-gray-700 mb-2">Tanggal Tour</label>
-                            <input type="date" id="tourDate" name="tourDate" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Jumlah Peserta</label>
-                            <div class="flex items-center border border-gray-300 rounded-lg">
-                                <button type="button" onclick="decrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-l-lg">-</button>
-                                <input type="number" id="participant-count" name="participantCount" value="1" min="1" class="w-full p-3 text-center border-x border-gray-300 focus:outline-none" onchange="updatePrice()" readonly>
-                                <button type="button" onclick="incrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-r-lg">+</button>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Nomor HP</label>
-                            <input type="tel" id="customerPhone" name="customerPhone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required placeholder="Contoh: 08123456789">
-                        </div>
-                        <div class="bg-tertiary/20 p-4 rounded-lg">
-                            <div class="flex justify-between items-center text-lg font-semibold">
-                                <span>Total Pembayaran:</span>
-                                <span id="totalPrice" class="text-primary">Rp 5.500.000</span>
-                                <input type="hidden" name="totalAmount" id="totalAmountInput" value="5500000">
-                            </div>
-                        </div>
-                        <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white py-3 rounded-lg transition-colors duration-300">
-                            Lanjutkan ke Pembayaran
-                        </button>
-                    </div>
-                </form>
+                <form action="./process/process_order.php" method="POST">
+    <input type="hidden" name="package_id" value="<?php echo $package_id; ?>">
+    <input type="hidden" name="package_name" value="<?php echo $package_name; ?>">
+    <input type="hidden" name="base_price" value="<?php echo $basePrice; ?>">
+    
+    <div>
+        <label class="block text-gray-700 mb-2">Nama Lengkap</label>
+        <input type="text" name="customer_name" required 
+               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+    </div>
+    <div>
+        <label class="block text-gray-700 mb-2">No. HP</label>
+        <input type="tel" name="customer_phone" required 
+               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+    </div>
+    <div class="space-y-4">
+        <div>
+            <label class="block text-gray-700 mb-2">Tanggal Tour</label>
+            <input type="date" id="tourDate" name="tourDate" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+        </div>
+        <div>
+            <label class="block text-gray-700 mb-2">Jumlah Peserta</label>
+            <div class="flex items-center border border-gray-300 rounded-lg">
+                <button type="button" onclick="decrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-l-lg">-</button>
+                <input type="number" id="participant-count" name="participantCount" value="1" min="1" class="w-full p-3 text-center border-x border-gray-300 focus:outline-none" onchange="updatePrice()" readonly>
+                <button type="button" onclick="incrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-r-lg">+</button>
             </div>
         </div>
+        <div class="bg-tertiary/20 p-4 rounded-lg">
+            <div class="flex justify-between items-center text-lg font-semibold">
+                <span>Total Pembayaran:</span>
+                <span id="totalPrice" class="text-primary">Rp 5.550.000</span>
+                <!-- Input tersembunyi untuk total_amount -->
+                <input type="hidden" name="total_amount" id="totalAmountInput" value="5500000">
+            </div>
+        </div>
+        <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white py-3 rounded-lg transition-colors duration-300">
+            Lanjutkan ke Pembayaran
+        </button>
+    </div>
+</form>
+</div>
+</div>
 
         <!-- Tabs Navigation -->
         <div class="mb-8">

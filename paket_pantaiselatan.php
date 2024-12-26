@@ -11,15 +11,6 @@ $basePrice = 350000;
     <main class="pt-32">
         <div class="container-custom">
             <!-- Breadcrumb -->
-            <div class="mb-6">
-                <div class="flex items-center space-x-2 text-sm text-gray-600">
-                    <a href="index.html" class="hover:text-primary">Beranda</a>
-                    <span>/</span>
-                    <a href="paket-travel.html" class="hover:text-primary">Paket Travel</a>
-                    <span>/</span>
-                    <span class="text-primary">Paket Pantai Selatan</span>
-                </div>
-            </div>
 
             <!-- Package Header -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">

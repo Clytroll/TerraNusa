@@ -1,56 +1,17 @@
 <?php
-$basePrice = 450000; // Harga dasar per orang
+session_start();
+$pageTitle = "Pantai Selatan";
+$package_id = 3; // Sesuaikan dengan ID paket di database
+$package_name = "Paket Pantai Selatan";
+require_once 'includes/header.php';
+require_once 'includes/navbar.php';
+$basePrice = 450000;
 ?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraNusa - Merapi Adventure</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#245B4F',
-                        'secondary': '#6A9C89',
-                        'tertiary': '#C4DAD2',
-                        'background': '#E9EFEC',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .container-custom {
-            width: 85%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-    </style>
-</head>
-<body class="bg-background">
-    <!-- Navbar -->
-    <nav class="fixed w-full bg-primary/95 backdrop-blur-md z-50">
-        <!-- Same navbar as before -->
-    </nav>
-
     <!-- Main Content -->
     <main class="pt-32">
         <div class="container-custom">
             <!-- Breadcrumb -->
-            <div class="mb-6">
-                <div class="flex items-center space-x-2 text-sm text-gray-600">
-                    <a href="index.html" class="hover:text-primary">Beranda</a>
-                    <span>/</span>
-                    <a href="paket-travel.html" class="hover:text-primary">Paket Travel</a>
-                    <span>/</span>
-                    <span class="text-primary">Merapi Adventure</span>
-                </div>
-            </div>
+            
 
             <!-- Package Header -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -107,40 +68,49 @@ $basePrice = 450000; // Harga dasar per orang
                     </div>
 
                     <!-- Booking Form -->
-                    <form id="bookingForm" action="process_order.php" method="POST">
-                        <input type="hidden" name="package_id" value="3"> <!-- ID untuk Merapi Adventure -->
-                        <input type="hidden" name="package_price" value="450000">
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-gray-700 mb-2">Tanggal Tour</label>
-                                <input type="date" id="tourDate" name="tourDate" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 mb-2">Jumlah Peserta</label>
-                                <div class="flex items-center border border-gray-300 rounded-lg">
-                                    <button type="button" onclick="decrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-l-lg">-</button>
-                                    <input type="number" id="participant-count" name="participantCount" value="1" min="1" class="w-full p-3 text-center border-x border-gray-300 focus:outline-none" onchange="updatePrice()" readonly>
-                                    <button type="button" onclick="incrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-r-lg">+</button>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 mb-2">Nomor HP</label>
-                                <input type="tel" id="customerPhone" name="customerPhone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required placeholder="Contoh: 08123456789">
-                            </div>
-                            <div class="bg-tertiary/20 p-4 rounded-lg">
-                                <div class="flex justify-between items-center text-lg font-semibold">
-                                    <span>Total Pembayaran:</span>
-                                    <span id="totalPrice" class="text-primary">Rp 450.000</span>
-                                    <input type="hidden" name="totalAmount" id="totalAmountInput" value="450000">
-                                </div>
-                            </div>
-                            <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white py-3 rounded-lg transition-colors duration-300">
-                                Lanjutkan ke Pembayaran
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    <form action="./process/process_order.php" method="POST">
+    <input type="hidden" name="package_id" value="<?php echo $package_id; ?>">
+    <input type="hidden" name="package_name" value="<?php echo $package_name; ?>">
+    <input type="hidden" name="base_price" value="<?php echo $basePrice; ?>">
+    
+    <div>
+        <label class="block text-gray-700 mb-2">Nama Lengkap</label>
+        <input type="text" name="customer_name" required 
+               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+    </div>
+    <div>
+        <label class="block text-gray-700 mb-2">No. HP</label>
+        <input type="tel" name="customer_phone" required 
+               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+    </div>
+    <div class="space-y-4">
+        <div>
+            <label class="block text-gray-700 mb-2">Tanggal Tour</label>
+            <input type="date" id="tourDate" name="tourDate" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" required>
+        </div>
+        <div>
+            <label class="block text-gray-700 mb-2">Jumlah Peserta</label>
+            <div class="flex items-center border border-gray-300 rounded-lg">
+                <button type="button" onclick="decrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-l-lg">-</button>
+                <input type="number" id="participant-count" name="participantCount" value="1" min="1" class="w-full p-3 text-center border-x border-gray-300 focus:outline-none" onchange="updatePrice()" readonly>
+                <button type="button" onclick="incrementCount()" class="p-3 text-primary hover:bg-gray-100 rounded-r-lg">+</button>
             </div>
+        </div>
+        <div class="bg-tertiary/20 p-4 rounded-lg">
+            <div class="flex justify-between items-center text-lg font-semibold">
+                <span>Total Pembayaran:</span>
+                <span id="totalPrice" class="text-primary">Rp 450.000</span>
+                <!-- Input tersembunyi untuk total_amount -->
+                <input type="hidden" name="total_amount" id="totalAmountInput" value="450000">
+            </div>
+        </div>
+        <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white py-3 rounded-lg transition-colors duration-300">
+            Lanjutkan ke Pembayaran
+        </button>
+    </div>
+</form>
+</div>
+</div>
 
             <!-- Tabs Navigation -->
             <div class="mb-8">
@@ -334,9 +304,7 @@ $basePrice = 450000; // Harga dasar per orang
     </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white py-8 mt-16">
-        <!-- Footer content same as main page -->
-    </footer>
+    <?php require_once 'includes/footer.php'?>
 
     <!-- Scripts -->
     <script>
@@ -361,40 +329,50 @@ $basePrice = 450000; // Harga dasar per orang
             event.target.classList.add('text-primary', 'border-b-2', 'border-primary');
         }
 
-        function formatPrice(price) {
-            return new Intl.NumberFormat('id-ID', { 
-                style: 'currency', 
-                currency: 'IDR',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0 
-            }).format(price);
-        }
+        // Definisi harga dasar
+    const basePrice = <?php echo $basePrice; ?>; 
 
-        function updatePrice() {
-            const count = parseInt(document.getElementById('participant-count').value);
-            const totalPrice = basePrice * count;
-            document.getElementById('totalPrice').textContent = formatPrice(totalPrice);
-            document.getElementById('totalAmountInput').value = totalPrice;
-        }
+// Format harga ke format Rupiah
+function formatPrice(price) {
+    return new Intl.NumberFormat('id-ID', { 
+        style: 'currency', 
+        currency: 'IDR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0 
+    }).format(price);
+}
 
-        function incrementCount() {
-            const input = document.getElementById('participant-count');
-            const currentValue = parseInt(input.value);
-            input.value = currentValue + 1;
-            updatePrice();
-        }
+// Update total harga berdasarkan jumlah peserta
+function updatePrice() {
+    const count = parseInt(document.getElementById('participant-count').value);
+    const totalPrice = basePrice * count;
+    document.getElementById('totalPrice').textContent = formatPrice(totalPrice);
+    document.getElementById('totalAmountInput').value = totalPrice;
+}
 
-        function decrementCount() {
-            const input = document.getElementById('participant-count');
-            const currentValue = parseInt(input.value);
-            if (currentValue > 1) {
-                input.value = currentValue - 1;
-                updatePrice();
-            }
-        }
+// Fungsi untuk menambah jumlah peserta
+function incrementCount() {
+    const input = document.getElementById('participant-count');
+    const currentValue = parseInt(input.value);
+    input.value = currentValue + 1;
+    updatePrice();
+}
 
-        // Initialize price on page load
-        document.addEventListener('DOMContentLoaded', updatePrice);
-    </script>
+// Fungsi untuk mengurangi jumlah peserta
+function decrementCount() {
+    const input = document.getElementById('participant-count');
+    const currentValue = parseInt(input.value);
+    if (currentValue > 1) {
+        input.value = currentValue - 1;
+        updatePrice();
+    }
+}
+
+// Initialize price on page load
+document.addEventListener('DOMContentLoaded', updatePrice);
+</script>
+<script>
+const basePrice = <?php echo $basePrice; ?>; // Definisi harga dasar
+</script>
 </body>
 </html>

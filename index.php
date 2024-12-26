@@ -4,6 +4,8 @@ $pageTitle = "Beranda";
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 ?>
+
+
         <!-- Hero section -->
         <section class="py-48 bg-cover bg-center relative">
             <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000" style="background-image: url('Gambar/tes1.jpg'); opacity: 1;" id="sliderImage1"></div>
