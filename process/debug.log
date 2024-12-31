@@ -1,0 +1,33 @@
+Array
+(
+    [package_id] => 1
+    [package_name] => Paket Pantai Selatan
+    [base_price] => 350000
+    [customer_name] => qwe
+    [customer_phone] => 0891277272
+    [tourDate] => 2025-01-02
+    [participantCount] => 1
+    [total_amount] => 350000
+)
+Array
+(
+    [package_id] => 2
+    [package_name] => Paket Pantai Selatan
+    [base_price] => 300000
+    [customer_name] => saki
+    [customer_phone] => 0891277272
+    [tourDate] => 2025-01-01
+    [participantCount] => 1
+    [total_amount] => 300000
+)
+Array
+(
+    [package_id] => 1
+    [package_name] => Paket Pantai Selatan
+    [base_price] => 350000
+    [customer_name] => asdsa
+    [customer_phone] => 0891277272
+    [tourDate] => 2025-01-02
+    [participantCount] => 2
+    [total_amount] => 700000
+)

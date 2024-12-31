@@ -1,44 +1,29 @@
-version: '3.7'
+version: '3.8'
 
 services:
   web:
     build: .
     ports:
-      - "80:80"  # Akses web di port 80
+      - "80:80"
     volumes:
-      - ./:/var/www/html  # Mount folder aplikasi ke dalam container
-    depends_on:
-      - db  # Web bergantung pada layanan database
+      - .:/var/www/html
     networks:
-      - terranusa_network
+      - terranusa-network
 
   db:
     image: mysql:8.0
+    container_name: terranusa-db
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword  # Ganti dengan password yang lebih aman
-      MYSQL_DATABASE: terranusa         # Nama database
-    volumes:
-      - db-data:/var/lib/mysql  # Persist data MySQL
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: terranusa
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
-      - "3306:3306"  # Akses MySQL di port 3306
+      - "3306:3306"
     networks:
-      - terranusa_network
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
-    ports:
-      - "8081:80"  # Akses phpMyAdmin di localhost:8081
-    depends_on:
-      - db
-    networks:
-      - terranusa_network
+      - terranusa-network
 
 networks:
-  terranusa_network:
+  terranusa-network:
     driver: bridge
-
-volumes:
-  db-data:

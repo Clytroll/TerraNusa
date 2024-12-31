@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
+$servername = "db"; // Ganti localhost dengan nama service database di Docker Compose
 $username = "root";
-$password = "";
+$password = "root_password"; // Sesuaikan dengan password dari docker-compose.yml
 $dbname = "terranusa";
 
 // Membuat koneksi

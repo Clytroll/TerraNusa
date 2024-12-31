@@ -5,11 +5,9 @@ session_start();
 require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Debug data yang diterima
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
-    
+    // Debug data yang diterima - gunakan log file
+    file_put_contents('debug.log', print_r($_POST, true), FILE_APPEND);
+
     // Generate order code
     $order_code = 'TN' . date('ymd') . rand(1000, 9999);
 
@@ -39,20 +37,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         if ($stmt->execute()) {
+            // Simpan data ke session
             $_SESSION['order_id'] = $stmt->insert_id;
             $_SESSION['order_code'] = $order_code;
-            
-            // Debug
-            echo "Order berhasil dibuat. ID: " . $_SESSION['order_id'];
-            echo "<br>Redirecting...";
-            
+
+            // Redirect ke halaman pembayaran
             header("Location: ../payment.php");
             exit;
         } else {
             throw new Exception("Error executing statement: " . $stmt->error);
         }
     } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
+        // Log error alih-alih menggunakan echo
+        file_put_contents('error.log', date('Y-m-d H:i:s') . " - Error: " . $e->getMessage() . PHP_EOL, FILE_APPEND);
+        // Tampilkan pesan error (opsional, hanya untuk pengembangan)
+        echo "Terjadi kesalahan: " . $e->getMessage();
     }
 }
 ?>
