@@ -1,6 +1,5 @@
 <?php
-session_start();
 session_destroy();
-header("Location: login.php");
+header("Location: get.php?page=index");
 exit;
 ?>

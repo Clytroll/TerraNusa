@@ -1,17 +1,28 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
 require_once 'includes/db.php';
 
-// Cek apakah ada order_id
 if (!isset($_SESSION['order_id'])) {
-    die("No order ID found in session");
+    header("Location: index.php");
+    exit;
+}
+
+$order_id = $_SESSION['order_id'];
+
+// Update order status to pending after reaching payment page
+$update_stmt = $conn->prepare("UPDATE orders SET payment_status = 'pending' WHERE id = ?");
+if ($update_stmt) {
+    $update_stmt->bind_param("i", $order_id);
+    $update_stmt->execute();
 }
 
 // Get order details
-$order_id = $_SESSION['order_id'];
-$stmt = $conn->prepare("SELECT o.* FROM orders o WHERE o.id = ?");
+$stmt = $conn->prepare("
+    SELECT o.*, p.name as packagess
+    FROM orders o 
+    LEFT JOIN packagess p ON o.package_id = p.id 
+    WHERE o.id = ?
+");
 
 if (!$stmt) {
     die("Error preparing statement: " . $conn->error);
@@ -26,20 +37,11 @@ if (!$order) {
     die("Order not found in database");
 }
 
-// Get package info separately
-$pkg_stmt = $conn->prepare("SELECT name FROM packagess WHERE id = ?");
-if ($pkg_stmt) {
-    $pkg_stmt->bind_param("i", $order['package_id']);
-    $pkg_stmt->execute();
-    $pkg_result = $pkg_stmt->get_result();
-    $package = $pkg_result->fetch_assoc();
-    $order['packagess'] = $package ? $package['name'] : 'Unknown Package';
-}
-
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 ?>
 
+<!-- Rest of the payment page HTML -->
 <!-- Sisanya sama seperti sebelumnya -->
 
 <main class="pt-32">

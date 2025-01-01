@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once '../../includes/db.php';
+require_once 'includes/db.php';
 
 if (!isset($_SESSION['admin_id'])) {
     header("Location: ../login.php");
@@ -41,7 +40,7 @@ $orders = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
 <body class="bg-gray-100">
     <div class="flex">
         <!-- Sidebar -->
-        <?php include '../includes/sidebar.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/admin/includes/sidebar.php'; ?>
 
         <!-- Main content -->
         <div class="flex-1">

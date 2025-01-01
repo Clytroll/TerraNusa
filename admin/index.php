@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once '../includes/db.php';
+require_once 'includes/db.php';
 
 // Check if admin is logged in
 if (!isset($_SESSION['admin_id'])) {
@@ -76,7 +75,7 @@ $recent_orders = $conn->query("
                     <div class="p-6 border-b border-gray-100">
                         <div class="flex items-center justify-between">
                             <h2 class="text-xl font-semibold text-gray-800">Pesanan Terbaru</h2>
-                            <a href="orders" class="text-primary hover:text-primary/80">
+                            <a href="get.php?page=orders" class="text-primary hover:text-primary/80">
                                 Lihat Semua
                             </a>
                         </div>

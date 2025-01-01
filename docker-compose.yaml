@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - "80:80"
+    restart: always
     volumes:
       - .:/var/www/html
     networks:
@@ -12,7 +13,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: terranusa-db
+    container_name: terranusa-db  
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root_password

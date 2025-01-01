@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once '../includes/db.php';
+require_once 'includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -15,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($admin && password_verify($password, $admin['PASSWORD'])) {
         $_SESSION['admin_id'] = $admin['id'];
         $_SESSION['admin_name'] = $admin['NAME'];
-        header("Location: index.php");
+        header("Location: get.php?page=index_admin");
         exit;
     } else {
         $error = "Username atau password salah";

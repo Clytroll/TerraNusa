@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once '../includes/db.php';
+require_once 'includes/db.php';
 
 // Check if admin is logged in
 if (!isset($_SESSION['admin_id'])) {
@@ -19,16 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['success'] = "Status pembayaran berhasil diperbarui";
     }
     
-    header("Location: orders.php");
+    header("Location: get.php?page=orders_admin");
     exit;
 }
 
 // Get order details
 $order_id = $_GET['id'] ?? 0;
 $stmt = $conn->prepare("
-    SELECT o.*, p.name as package_name 
+    SELECT o.*, p.name as packagess
     FROM orders o 
-    JOIN packages p ON o.package_id = p.id 
+    JOIN packagess p ON o.package_id = p.id 
     WHERE o.id = ?
 ");
 
@@ -37,7 +36,7 @@ $stmt->execute();
 $order = $stmt->get_result()->fetch_assoc();
 
 if (!$order) {
-    header("Location: orders.php");
+    header("Location: get.php?page=orders_admin");
     exit;
 }
 ?>
@@ -52,7 +51,7 @@ if (!$order) {
 </head>
 <body class="bg-gray-100">
     <div class="flex">
-        <?php include 'includes/sidebar.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/admin/includes/sidebar.php'; ?>
         
         <div class="flex-1 p-8">
             <div class="max-w-3xl mx-auto">
@@ -107,7 +106,7 @@ if (!$order) {
                 </div>
                 
                 <div class="text-center">
-                    <a href="orders.php" class="text-gray-600 hover:text-gray-800">
+                    <a href="get.php?page=orders_admin" class="text-gray-600 hover:text-gray-800">
                         Kembali ke Daftar Pesanan
                     </a>
                 </div>

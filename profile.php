@@ -1,10 +1,9 @@
 <?php
 // profile.php
-session_start();
 require_once 'includes/db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: get.php?page=index");
     exit;
 }
 
@@ -28,7 +27,7 @@ $user = $result->fetch_assoc();
             <form action="auth/update_profile.php" method="POST" enctype="multipart/form-data" class="space-y-6">
                 <div class="flex items-center space-x-6">
                     <div class="flex-shrink-0">
-                        <img src="<?php echo $user['profile_image'] ?? 'Gambar/Profil.jpg'; ?>" 
+                        <img src="<?php echo $user['profile_image'] ?? 'default-profile.jpg'; ?>" 
                              alt="Profile" 
                              class="h-32 w-32 rounded-full object-cover">
                     </div>

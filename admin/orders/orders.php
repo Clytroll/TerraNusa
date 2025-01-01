@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once '../includes/db.php';
+require_once 'includes/db.php';
 
 // Check if admin is logged in
 if (!isset($_SESSION['admin_id'])) {
@@ -27,7 +26,7 @@ $orders = $conn->query("
 </head>
 <body class="bg-gray-100">
     <div class="flex">
-        <?php include '../includes/sidebar.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/admin/includes/sidebar.php'; ?>
         
         <div class="flex-1 p-8">
             <div class="mb-8">
@@ -82,24 +81,32 @@ $orders = $conn->query("
                                     Rp <?php echo number_format($order['total_amount'], 0, ',', '.'); ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <?php if ($order['payment_status'] === 'pending'): ?>
-                                        <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">
-                                            Pending
-                                        </span>
-                                    <?php else: ?>
-                                        <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">
-                                            Lunas
-                                        </span>
-                                    <?php endif; ?>
+                                    <?php 
+                                    switch($order['payment_status']) {
+                                        case 'pending':
+                                            echo '<span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">Pending</span>';
+                                            break;
+                                        case 'paid':
+                                            echo '<span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Lunas</span>';
+                                            break;
+                                        case 'cancelled':
+                                            echo '<span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">Batal</span>';
+                                            break;
+                                        default:
+                                            echo '<span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Unknown</span>';
+                                    }
+                                    ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <?php if ($order['payment_status'] === 'pending'): ?>
-                                        <a href="verify-order.php?id=<?php echo $order['id']; ?>" 
+                                        <a href="get.php?page=verifyorder_admin&id=<?php echo $order['id']; ?>" 
                                            class="text-primary hover:text-primary/80">
                                             Verifikasi
                                         </a>
+                                    <?php elseif ($order['payment_status'] === 'cancelled'): ?>
+                                        <span class="text-gray-400">Dibatalkan</span>
                                     <?php else: ?>
-                                        <a href="view-order.php?id=<?php echo $order['id']; ?>"
+                                        <a href="get.php?page=vieworder_admin&id=<?php echo $order['id']; ?>"
                                            class="text-gray-600 hover:text-gray-800">
                                             Detail
                                         </a>
